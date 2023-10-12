@@ -217,7 +217,7 @@ header {
 .content-item i.fa-heart {
     position: absolute;
     top: 10px;
-    right: 60px;
+    right: 50px;
     cursor: pointer;
     font-size: 20px;
     z-index: 1;
@@ -230,7 +230,6 @@ header {
     -webkit-text-stroke: 1px white;
 }
 
-/* Styles pour les flèches de navigation */
 .content-item i.fa-heart {
     position: absolute;
     top: 10px;
@@ -358,4 +357,42 @@ footer {
     background-color: #ddd0c8;
     padding-top: 40px;
     box-sizing: border-box;
+}
+
+.favoris-section {
+    background-color: #eeeeee;
+}
+
+.favoris-titre{
+    margin-left: 35px;
+    font-size: 30px;
+    position: relative;
+}
+
+.favoris-titre::before{
+    content: "";
+    position: absolute;
+    background-color: #1b5eaf;
+    width: 40px;
+    height: 6px;
+    bottom: 0px;
+}
+
+.une-section{
+    background-color: #eeeeee;
+}
+
+.liste-biens{
+    margin-left: 35px;
+    font-size: 30px;
+    position: relative;
+}
+
+.liste-biens::before{
+    content: "";
+    position: absolute;
+    background-color: #1b5eaf;
+    width: 40px;
+    height: 6px;
+    bottom: 0px;
 }
