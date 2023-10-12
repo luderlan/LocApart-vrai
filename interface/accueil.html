@@ -36,7 +36,7 @@
         <div class="content-item">
             <label for="img1" class="arrow left"><i class="fas fa-chevron-left"></i></label>
             <label for="img2" class="arrow right"><i class="fas fa-chevron-right"></i></label>
-            <i class="fa-solid fa-heart" style="color: #1b5eaf;"></i>
+            <i class="fa-solid fa-heart clickable" style="color: #1b5eaf;"></i>
             <a href="pageBien.html">
                 <img src="../assets/img/bien1/img1.jpg" alt="Image 1">
                 <h2>Paristot, France</h2>
@@ -46,7 +46,7 @@
         <div class="content-item">
             <label for="img1" class="arrow left"><i class="fas fa-chevron-left"></i></label>
             <label for="img2" class="arrow right"><i class="fas fa-chevron-right"></i></label>
-            <i class="fa-solid fa-heart" style="color: #1b5eaf;"></i>
+            <i class="fa-solid fa-heart clickable" style="color: #1b5eaf;"></i>
             <a href="pageBien.html">
                 <img src="../assets/img/bien2/img1.jpg" alt="Image 2">
                 <h2>Cremps, France</h2>
@@ -56,7 +56,7 @@
         <div class="content-item">
             <label for="img1" class="arrow left"><i class="fas fa-chevron-left"></i></label>
             <label for="img2" class="arrow right"><i class="fas fa-chevron-right"></i></label>
-            <i class="fa-solid fa-heart" style="color: #1b5eaf;"></i>
+            <i class="fa-solid fa-heart clickable" style="color: #1b5eaf;"></i>
             <a href="pageBien.html">
                 <img src="../assets/img/bien3/img1.jpeg" alt="Image 3">
                 <h2>Sanvensa, France</h2>
@@ -66,7 +66,7 @@
         <div class="content-item">
             <label for="img1" class="arrow left"><i class="fas fa-chevron-left"></i></label>
             <label for="img2" class="arrow right"><i class="fas fa-chevron-right"></i></label>
-            <i class="fa-solid fa-heart" style="color: #1b5eaf;"></i>
+            <i class="fa-solid fa-heart clickable" style="color: #1b5eaf;"></i>
             <a href="pageBien.html">
                 <img src="../assets/img/bien4/img1.jpg" alt="Image 4">
                 <h2>Bellegarde-Marsal, France</h2>
@@ -74,12 +74,12 @@
             </a>
         </div>
 
-        <!--Deuxièmes parties-->
+        
         
         <div class="content-item">
             <label for="img1" class="arrow left"><i class="fas fa-chevron-left"></i></label>
             <label for="img2" class="arrow right"><i class="fas fa-chevron-right"></i></label>
-            <i class="fa-solid fa-heart" style="color: #1b5eaf;"></i>
+            <i class="fa-solid fa-heart clickable" style="color: #1b5eaf;"></i>
             <a href="pageBien.html">
                 <img src="../assets/img/bien5/img1.jpg" alt="Image 5">
                 <h2>Tonnac, France</h2>
@@ -89,7 +89,7 @@
         <div class="content-item">
             <label for="img1" class="arrow left"><i class="fas fa-chevron-left"></i></label>
             <label for="img2" class="arrow right"><i class="fas fa-chevron-right"></i></label>
-            <i class="fa-solid fa-heart" style="color: #1b5eaf;"></i>
+            <i class="fa-solid fa-heart clickable" style="color: #1b5eaf;"></i>
             <a href="pageBien.html">
                 <img src="../assets/img/bien6/img1.jpg" alt="Image 6">
                 <h2>Le Dourn, France</h2>
@@ -99,7 +99,7 @@
         <div class="content-item">
             <label for="img1" class="arrow left"><i class="fas fa-chevron-left"></i></label>
             <label for="img2" class="arrow right"><i class="fas fa-chevron-right"></i></label>
-            <i class="fa-solid fa-heart" style="color: #1b5eaf;"></i>
+            <i class="fa-solid fa-heart clickable" style="color: #1b5eaf;"></i>
             <a href="pageBien.html">
                 <img src="../assets/img/bien7/img1.jpg" alt="Image 7">
                 <h2>Mouillac, France</h2>
@@ -109,7 +109,7 @@
         <div class="content-item">
             <label for="img1" class="arrow left"><i class="fas fa-chevron-left"></i></label>
             <label for="img2" class="arrow right"><i class="fas fa-chevron-right"></i></label>
-            <i class="fa-solid fa-heart" style="color: #1b5eaf;"></i>
+            <i class="fa-solid fa-heart clickable" style="color: #1b5eaf;"></i>
             <a href="pageBien.html">
                 <img src="../assets/img/bien8/img1.jpg" alt="Image 8">
                 <h2>Itzac, France</h2>
@@ -118,7 +118,63 @@
         </div>
     </section>
 
-    <script type="text/javascript" src="../assets/js/script-menu.js"></script>
+    <section class="favoris-section">
+        <h2>Bien coup de cœur :</h2>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    // Sélectionnez tous les éléments cliquables
+    const clickableElements = document.querySelectorAll('.clickable');
+
+    // Ajoutez un gestionnaire d'événements à chaque élément cliquable
+    clickableElements.forEach(function (element) {
+        element.addEventListener('click', function () {
+            // Obtenez le parent content-item
+            const contentItem = this.closest('.content-item');
+
+            // Dupliquez le content-item
+            const clonedItem = contentItem.cloneNode(true);
+
+            // Vérifiez si le content-item est déjà dans la section Bien coup de cœur
+            const isInFavorites = isItemInFavorites(clonedItem);
+
+            if (!isInFavorites) {
+                // Ajoutez le content-item cloné à la section Bien coup de cœur
+                addToFavorites(clonedItem);
+            } else {
+                // Si le content-item est déjà dans la section, supprimez-le
+                removeFromFavorites(clonedItem);
+            }
+        });
+    });
+
+    function addToFavorites(item) {
+        const favorisContainer = document.querySelector('.favoris-section');
+        favorisContainer.appendChild(item);
+
+        // Ajoutez un gestionnaire pour supprimer l'élément au clic sur le cœur
+        const heartIcon = item.querySelector('.clickable');
+        heartIcon.addEventListener('click', function () {
+            removeFromFavorites(item);
+        });
+    }
+
+    function removeFromFavorites(item) {
+        const favorisContainer = document.querySelector('.favoris-section');
+        favorisContainer.removeChild(item);
+    }
+
+    function isItemInFavorites(item) {
+        const favorisContainer = document.querySelector('.favoris-section');
+        const existingItems = favorisContainer.querySelectorAll('.content-item');
+
+        // Vérifiez si l'élément est déjà présent dans la section Bien coup de cœur
+        return Array.from(existingItems).some(function (existingItem) {
+            return existingItem.isEqualNode(item);
+        });
+    }
+});
+    </script>
 
 </body>
 <footer style="background-color: #ddd0c8; padding-top: 40px;">
