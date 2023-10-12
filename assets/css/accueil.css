@@ -351,3 +351,11 @@ header {
     background-color: rgba(0, 0, 0, 0.025);
     padding: 10px; 
 }
+
+footer {
+    bottom: 0;
+    width: 100%;
+    background-color: #ddd0c8;
+    padding-top: 40px;
+    box-sizing: border-box;
+}
