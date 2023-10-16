@@ -343,7 +343,7 @@ footer {
     border: 2px solid #1b5eaf;
     border-radius: 0px;
     box-sizing: border-box;
-    color: #fff;
+    color: #2c2c2c;
     cursor: pointer;
     display: inline-block;
     font-weight: 390;
@@ -420,16 +420,16 @@ footer {
   
   .fancy:hover {
     color: white;
-    background: #cacaca;
+    background: #dccfc7;
   }
   
   .fancy:hover::before {
     width: 1.5rem;
-    background: white;
+    background: #2c2c2c;
   }
   
   .fancy:hover .text {
-    color: white;
+    color: #2c2c2c;
     padding-left: 1.5em;
   }
   
