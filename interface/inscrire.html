@@ -35,44 +35,61 @@
 
     <div class="container">
         <div class="form_area">
+
             <p class="title">S'inscrire</p>
-            <form action="">
+
+            <form action="aiguilleur.php" method="POST">
+
+                <input type="hidden" name="action" value="create_client">
+
                 <div class="form_group">
                     <label class="sub_title" for="nom_client">Nom</label>
-                    <input placeholder="Entrez votre nom..." class="form_style" type="text">
+                    <input type="text" placeholder="Entrez votre nom..." class="form_style" id="nom" name="nom" required>
                 </div>
+
                 <div class="form_group">
                     <label class="sub_title" for="prenom_client">Prénom</label>
-                    <input placeholder="Entrez votre prénom..." class="form_style" type="text">
+                    <input type="text" placeholder="Entrez votre prénom..." class="form_style" id="prenom" name="prenom" required>
                 </div>
+
                 <div class="form_group">
                     <label class="sub_title" for="rue_client">Rue</label>
-                    <input placeholder="Entrez votre rue..." class="form_style" type="text">
+                    <input type="text" placeholder="Entrez votre rue..." class="form_style" id="rue" name="rue" required>
                 </div>
+
                 <div class="form_group">
                     <label class="sub_title" for="code_client">Code Postal</label>
-                    <input placeholder="Entrer votre code postal..." class="form_style" type="text">
+                    <input type="text" placeholder="Entrez votre Code Postal..." class="form_style" id="cp" name="cp" required>
                 </div>
+
                 <div class="form_group">
-                    <label class="sub_title" for="code_client">Ville</label>
-                    <input placeholder="Entrer votre ville..." class="form_style" type="text">
+                    <label class="sub_title" for="ville_client">ville</label>
+                    <input type="text" placeholder="Entrez votre ville..." class="form_style" id="ville" name="ville" required>
                 </div>
+
                 <div class="form_group">
-                    <label class="sub_title" for="code_client">Email</label>
-                    <input placeholder="Entrer votre email..." id="email" class="form_style" type="email">
+                    <label class="sub_title" for="mail_client">Email</label>
+                    <input type="text" placeholder="Entrez votre mail..." class="form_style" id="mail" name="mail" required>
                 </div>
+
                 <div class="form_group">
                     <label class="sub_title" for="password">Mot de passe</label>
-                    <input placeholder="Entrer votre mot de passe..." id="password" class="form_style" type="password">
+                    <input type="password" placeholder="Entrez votre mot de passe..." class="form_style" id="mdp" name="mdp" required>
                 </div>
+
+
+
+<!--
+
                 <div class="form_group">
                     <label class="sub_title" for="password">Confirmer mot de passe</label>
                     <input placeholder="Entrer à nouveau votre mot de passe..." id="password" class="form_style" type="password">
-                </div>
+                </div> -->
+
+                
                 <div>
-                    <button class="btn">S'inscrire</button>
-                    <p>Avez vous un compte ? <a class="link" href="connecter.html">Se connecter !</a></p><a class="link" href="">
-                </a></div>
+                    <button type="submit" class="btn">S'inscrire</button>
+                    <p>Avez vous un compte ? <a class="link" href="connecter.html">Se connecter !</a></p></div> <br>
             
         </a></form></div>
     </a></div>
