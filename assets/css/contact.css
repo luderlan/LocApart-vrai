@@ -244,18 +244,18 @@ footer {
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 350px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    position: relative;
-    border: 1px solid #1b5eaf;
-    border-radius: 10px;
-    margin-left: 580px;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 350px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  border: 1px solid #1b5eaf;
+  border-radius: 10px;
+  margin: 0 auto;
+}
   
   .message {
     color: rgba(88, 87, 87, 0.822);
