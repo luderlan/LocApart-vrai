@@ -35,11 +35,11 @@ require_once("../class/type_bien.php");
                             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                                 echo "<tr>";
                                 echo "<td>", $row['id_type_bien'], "</td>";
-                                echo "<td><input type='text' name='lib_type_bien' value='", $row['lib_type_bien'], "'></td>";
+                                echo "<td><input type='text' name='lib_type_bien[", $row['id_type_bien'], "]' value='", $row['lib_type_bien'], "'></td>";
                                 echo "<td><button class='btn btn-primary' name='update' value='", $row['id_type_bien'], "' type=submit'>Modifier</button>
-                                <button class='btn btn-danger' name='delete' value='", $row['id_type_bien'], "' type=submit'>Supprimer</button></td>";
+                                      <button class='btn btn-danger' name='delete' value='", $row['id_type_bien'], "' type=submit'>Supprimer</button></td>";
                                 echo "</tr>";
-                            }
+                            }                            
                         } else {
                             echo "<p>Aucun résultat trouvé.</p>";
                         }
