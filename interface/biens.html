@@ -22,7 +22,7 @@
             <li><a href="accueil.html"><i class="fa-solid fa-house" style="color: #1b5eaf;"></i> Accueil</a></li>
             <li><a href="#" class="active"><i class="fa-solid fa-thumbtack" style="color: #1b5eaf;"></i> Nos biens</a></li>
             <li><a href="contact.html"><i class="fa-solid fa-address-book" style="color: #1b5eaf;" ></i> Contact</a></li>
-            <li class="search-bar"><i class="fa-solid fa-search"></i><pre> </pre><input type="text" placeholder=" Recherche..."></li>
+            <li style="font-size: 1.1rem;" class="search-bar" onclick="afficherInterfaceRecherche()"><i class="fa-solid fa-search"></i><pre> </pre>Filtres</li>
         </ul>
 
         <div class="navbar">
@@ -31,11 +31,40 @@
             <div class="bx bx-menu" id="menu-icon"></div>
         </div>
     </header>
+
+    <div id="interface-recherche" 
+        style="display: none; 
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 310px;
+        height: 1920px;
+        border: 4px solid #ddd0c8;
+        padding: 10px;
+        z-index: 999;
+        background: #eeeeee;">
+        <h3 style="text-align: center;">Options de filtrage :</h3>
+        <br>
+        <hr>
+        <br>
+        <br>
+        <p>
+            •Filtre 1 <br> <br>
+            •Filtre 2 <br> <br>
+            •Filtre 3 <br> <br>
+            •Filtre 4 <br> <br>
+            •Filtre 5 <br> <br>
+            •Filtre 6 <br> <br>
+        </p>
+    </div>    
     
     <section class="une-section">
         <h2 class="liste-biens">Liste de nos biens :</h2>   
     </section>
     <section class="content-section">
+
+        <!--Premières parties-->
+
         <div class="content-item">
             <label for="img1" class="arrow left"><i class="fas fa-chevron-left"></i></label>
             <label for="img2" class="arrow right"><i class="fas fa-chevron-right"></i></label>
@@ -170,6 +199,26 @@
     </section>
     <script src="../assets/js/script.js"></script>
     
+    <script>
+        // Fonction pour afficher/masquer l'interface de recherche
+        function afficherInterfaceRecherche() {
+            var interfaceRecherche = document.getElementById("interface-recherche");
+        }
+        // Fonction pour afficher/masquer l'interface de recherche
+        function afficherInterfaceRecherche() {
+            var interfaceRecherche = document.getElementById("interface-recherche");
+    
+            // Vérifiez l'état actuel de l'interface
+            if (interfaceRecherche.style.display === "none") {
+                // Si elle est actuellement masquée, affichez-la
+                interfaceRecherche.style.display = "block";
+            } else {
+                // Sinon, masquez-la
+                interfaceRecherche.style.display = "none";
+            }
+        }
+    </script>
+
 </body>
 <footer style="background-color: #ddd0c8; padding-top: 40px;">
     <div class="card">
