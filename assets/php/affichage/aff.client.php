@@ -195,5 +195,10 @@ require_once("../class/class.client.php");
             border-radius: 4px;
         }
 
+        .section-admin {
+        margin-left: 30px;
+        display: none;
+        }
+
     </style>
 </html>
