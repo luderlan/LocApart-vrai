@@ -89,8 +89,9 @@ require_once("../class/class.client.php");
                 <label for="mail_client" class="formulaire-label">Mail client : </label>
                 <input type="text" name="mail_client" id="mail_client" class="formulaire-input">
 
-                <label for="pass_client" class="formulaire-label">Mdp Client : </label>
-                <input type="password" name="pass_client" id="pass_client" class="formulaire-input">
+                <label for='pass_client' class='formulaire-label'>Mot de passe client : </label>
+                <input type='password' name='pass_client' id='pass_client' class='formulaire-input'>
+
 
                 <label for="statut_client" class="formulaire-label">Statut du client : </label>
                 <input type="text" name="statut_client" id="statut_client" class="formulaire-input">
