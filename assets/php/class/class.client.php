@@ -147,6 +147,7 @@ class Client
 
     public function updateClient($id, $nom,$prenom,$rue,$code,$ville,$mail,$pass,$statut,$valid)
     {
+
         $data = [
             ":idc" => $id,
             ":nom" => $nom,
@@ -155,7 +156,7 @@ class Client
             ":cod" => $code,
             ":ville" => $ville,
             ":mail" => $mail,
-            ":mdp" => $pass,
+            ":mdp" => MD5($pass),
             ":statut" => $statut,
             ":valide" => $valid
         ];
