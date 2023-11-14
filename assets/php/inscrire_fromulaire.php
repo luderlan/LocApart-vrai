@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"]) && $_POST["a
     $cp = $_POST["cp"];
     $ville = $_POST["ville"];
     $mail = $_POST["mail"];
-    $mdp = $_POST["mdp"];
+    $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
 
     $serveur = "localhost";
     $utilisateur = "root";
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"]) && $_POST["a
     $sql = "INSERT INTO inscrire (nom, prenom, rue, cp, ville, mail, mdp) VALUES ('$nom', '$prenom', '$rue', '$cp', '$ville', '$mail', '$mdp')";
 
     if ($connexion->query($sql) === TRUE) {
-        echo "Nouvel enregistrement créé avec succès";
+        echo "Vous êtes inscrit ! Vous pouvez retourner sur le site pour vous connecter";
     } else {
         echo "Erreur : " . $sql . "<br>" . $connexion->error;
     }
