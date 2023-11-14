@@ -33,6 +33,7 @@ require_once("../class/class.client.php");
                             <th>Mdp client</th>
                             <th>Statut client</th>
                             <th>Valid client</th>
+                            <th>Actions</th>
                         </tr>
 
                     </thead>
@@ -103,9 +104,7 @@ require_once("../class/class.client.php");
         </section>
     </main>
 </body>
-
-
-
+</html>
 
 <style>
         body {
@@ -115,7 +114,7 @@ require_once("../class/class.client.php");
             padding: 0;
         }
         main {
-            max-width: 800px;
+            max-width:1500px;
             margin: 20px auto;
             background-color: #fff;
             padding: 20px;
@@ -130,7 +129,7 @@ require_once("../class/class.client.php");
         }
 
         th, td {
-            padding: 12px;
+            padding: 6px;
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
@@ -141,21 +140,23 @@ require_once("../class/class.client.php");
         }
 
         input[type="text"] {
-            padding: 8px;
-            margin-right: 10px;
+            padding: 4px;
+            margin-right: 5px;
+            width: 100%;
         }
 
         .formulaire-insertion {
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
         .formulaire-label {
             display: block;
             margin-bottom: 8px;
+
         }
 
         .formulaire-input {
-            width: 60%;
+            width: 25%;
             padding: 8px;
             margin-bottom: 20px;
         }
@@ -193,5 +194,8 @@ require_once("../class/class.client.php");
             border-radius: 4px;
         }
 
-    </style>
-</html>
+        .section-admin {
+        margin-left: 30px;
+        display: none;
+        }
+</style>

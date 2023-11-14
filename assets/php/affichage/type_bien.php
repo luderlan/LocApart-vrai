@@ -60,7 +60,7 @@ require_once("../class/type_bien.php");
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
             margin: 0;
-            padding: 0;
+            padding: 0; 
         }
         main {
             max-width: 800px;

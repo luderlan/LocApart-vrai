@@ -12,27 +12,13 @@ if (isset($_POST['updateCli'])) {
     $code_client = $_POST['code_client'][$id_client];
     $vil_client = $_POST['vil_client'][$id_client];
     $mail_client = $_POST['mail_client'][$id_client];
-    $pass_client = password_hash($_POST['pass_client'], PASSWORD_DEFAULT);
+    $pass_client = $_POST['pass_client'][$id_client];
     $statut_client = $_POST['statut_client'][$id_client];
     $valid_client = $_POST['valid_client'][$id_client];
 
 
-
-// if (isset($_POST['updateCli'])) {
-//     $id_client = $_POST['updateCli'];
-//     $nom_client = isset($_POST['nom_client'][$id_client]) ? $_POST['nom_client'][$id_client] : '';
-//     $prenom_client = isset($_POST['prenom_client'][$id_client]) ? $_POST['prenom_client'][$id_client] : '';
-//     $rue = isset($_POST['rue_client'][$id_client]) ? $_POST['rue_client'][$id_client] : '';
-//     $code_client = isset($_POST['code_client'][$id_client]) ? $_POST['code_client'][$id_client] : '';
-//     $vil_client = isset($_POST['vil_client'][$id_client]) ? $_POST['vil_client'][$id_client] : '';
-//     $mail_client = isset($_POST['mail_client'][$id_client]) ? $_POST['mail_client'][$id_client] : '';
-//     $pass_client = isset($_POST['pass_client'][$id_client]) ? $_POST['pass_client'][$id_client] : '';
-//     $statut_client = isset($_POST['statut_client'][$id_client]) ? $_POST['statut_client'][$id_client] : '';
-//     $valid_client = isset($_POST['valid_client'][$id_client]) ? $_POST['valid_client'][$id_client] : '';
-
-
-
-    $oClient->updateClient($id_client, $nom_client,$prenom_client,$rue_client,$code_client,$vil_client,$mail_client,$pass_client,$statut_client,$valid_client);
+    $oClient->updateClient($id_client, $nom_client,$prenom_client,$rue_client,$code_client,$vil_client,$mail_client,$pass_client,
+    $statut_client,$valid_client);
     header("location:../affichage/aff.client.php");
 } elseif (isset($_POST['deleteCli'])) {
     $id_client = $_POST['deleteCli'];
