@@ -140,6 +140,9 @@ require_once("../class/type_bien.php");
             border: none;
             border-radius: 4px;
         }
-
+        .section-admin {
+        margin-left: 30px;
+        display: none;
+        }
     </style>
 </html>

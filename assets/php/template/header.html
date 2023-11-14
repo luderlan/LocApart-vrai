@@ -11,7 +11,7 @@
         <img class="logo" src="../../../logo-site/logo-finis.png" alt="">
 
         <ul class="navbar">
-            <li><a href="#" class="active"><i class="fa-solid fa-lock" style="color: #1b5eaf;"></i> Admin</a></li>
+            <li class="active"><a href="../template/header.html"><i class="fa-solid fa-lock" style="color: #1b5eaf;"></i> Admin</a></li>
             <li><a href="../../../interface/accueil.html"><i class="fa-solid fa-house" style="color: #1b5eaf;"></i> Accueil</a></li>
             <li><a href="../../../interface/biens.html"><i class="fa-solid fa-thumbtack" style="color: #1b5eaf;"></i> Nos biens</a></li>
             <li><a href="../../../interface/contact.html"><i class="fa-solid fa-address-book" style="color: #1b5eaf;" ></i> Contact</a></li>
@@ -23,6 +23,19 @@
             <div class="bx bx-menu" id="menu-icon"></div>
         </div>
     </header>
+    <div class="section-admin">
+        <h2>Connecté en tant qu'administrateur</h2>
+        <br>
+        <h4>Dirigez-vous vers la page de gestion de votre choix :</h4>
+        <br>
+        <br>
+        <a href="" class="button">Clients</a>
+        <a href="" class="button">Biens</a>
+        <a href="" class="button">Photos</a>
+        <a href="" class="button">Réservation</a>
+        <a href="" class="button">Tarif</a>
+        <a href="../affichage/type_bien.php" class="button">Type bien</a>
+    </div>
 </body>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Finlandica:wght@500&display=swap');
@@ -181,5 +194,64 @@ header {
     font-size: 20px;
     cursor: pointer;
 }
+
+.sub-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    box-shadow: 0 0 10px rgba(14, 14, 14, 0.1);
+    width: 100%;
+    z-index: 1; 
+    text-align: center;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+.navbar > li:hover .sub-menu {
+    display: block;
+}
+
+.navbar > li {
+    position: relative;
+}
+
+.sub-menu li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    display: block;
+    width: 100%;
+}
+
+.sub-menu li:last-child {
+    border-bottom: none;
+}
+
+.sub-menu li {
+    transition: background-color 0.2s;
+}
+
+.sub-menu li:hover {
+    background-color: #ddd0c8;
+}
+
+.section-admin {
+    text-align: center;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1b5eaf;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #15548c;
+}
+
 </style>
 </html> 
