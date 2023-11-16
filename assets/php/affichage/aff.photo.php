@@ -12,6 +12,8 @@ require_once("../class/class.photo.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photos - Loc'Appart</title>
+    <script type="text/javascript" src="../js/script.autocomp.js"></script>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
 </head>
 
 <body>
@@ -43,8 +45,11 @@ require_once("../class/class.photo.php");
 
                                 echo "<td><input type='text' name='nom_photo[", $row['id_photo'], "]' value='", $row['nom_photo'], "'></td>";
                                 echo "<td><input type='text' name='lien_photo[", $row['id_photo'], "]' value='", $row['lien_photo'], "'></td>";
-                                echo "<td><input type='int' name='id_bien[", $row['id_photo'], "]' value='", $row['id_bien'], "'></td>";
                                 
+
+                
+                                
+
 
                                 echo "<td><button class='btn btn-primary' name='updatePho' value='", $row['id_photo'], "' type=submit'>Modifier</button>
                                       <button class='btn btn-danger' name='deletePho' value='", $row['id_photo'], "' type=submit'>Supprimer</button></td>";
@@ -66,8 +71,23 @@ require_once("../class/class.photo.php");
                 <label for="lien_photo" class="formulaire-label">Lien photo : </label>
                 <input type="text" name="lien_photo" id="lien_photo" class="formulaire-input">
 
-                <label for="id_bien" class="formulaire-label">id_bien : </label>
-                <input type="int" name="id_bien" id="id_bien" class="formulaire-input">
+
+
+                <label for="id_bien" class="formulaire-label">bien : </label>
+                <div class="input_container">
+                    <input type="text" id="id_bien" onkeyup="autocomplet()">
+                    <ul id="nom_list_id"></ul>
+
+
+
+
+
+
+
+
+
+
+
 
         
 
@@ -167,4 +187,15 @@ require_once("../class/class.photo.php");
         }
 
     </style>
-</html>
+
+
+                    echo "<td><select id="id_bien" name="id_bien">";
+                                    $all_photo = $con->selectIdBien();
+                                    foreach($all_photos as $photo) {
+                                        echo"<option value=" echo $photo["id_photo"];
+                                        echo $équipe["id_photo"]." ".$équipe["région"];}
+                                </option>
+                            </select>
+                        </td>"
+
+                        </html>
