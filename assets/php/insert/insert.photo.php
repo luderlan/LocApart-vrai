@@ -5,12 +5,11 @@ require_once("../class/class.photo.php");
 
 $nvNomPhoto = $_POST['nom_photo'];
 $nvLienPhoto = $_POST['lien_photo'];
-$nvIdBien = $_POST['id_bien'];
+$nouveauIdBien = $_POST['id_bien2'];
 
-$oNouveauClient = new Photo($con);
+$oNouveauPhoto= new Photo($con);
 
-$oNouveauClient->insertPhoto($nvNomPhoto,$nvLienPhoto,$nvIdBien);
+$oNouveauPhoto->insertPhoto($nvNomPhoto, $nvLienPhoto, $nouveauIdBien);
 
 header("location:../affichage/aff.photo.php");
-
 ?>
