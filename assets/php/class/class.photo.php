@@ -118,6 +118,12 @@ class Photo
         $stmt->execute($data);
         return $stmt;
     }
+
+    public function selectIdBien(){
+        $sql="SELECT * FROM biens;";
+        $executesql = $this->con->query($sql);                   
+        return $executesql;
+    }
 }
 
-?>
+?>    

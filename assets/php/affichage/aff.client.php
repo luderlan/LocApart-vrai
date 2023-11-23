@@ -2,6 +2,8 @@
 
 require_once("../include/connexion.inc.php");
 require_once("../class/class.client.php");
+require_once("../class/class.comm.php");
+
 
 ?>
 
@@ -12,6 +14,8 @@ require_once("../class/class.client.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clients - Loc'Appart</title>
+    <script type="text/javascript" src="../../js/autocomp/script.client.js"></script>
+    <script type="text/javascript" src="../../js/autocomp/jquery.min.js"></script>
 </head>
 
 <body>
@@ -42,6 +46,10 @@ require_once("../class/class.client.php");
                         $oClient = new Client($con);
                         $result = $oClient->selectClient();
 
+                        $oCommunes = new Communes($con);
+                        // $resultat = $oCommunes->selectCommune();
+
+
                         if ($result->rowCount() > 0) {
                             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 
@@ -52,7 +60,16 @@ require_once("../class/class.client.php");
                                 echo "<td><input type='text' name='prenom_client[", $row['id_client'], "]' value='", $row['prenom_client'], "'></td>";
                                 echo "<td><input type='text' name='rue_client[", $row['id_client'], "]' value='", $row['rue_client'], "'></td>";
                                 echo "<td><input type='text' name='code_client[", $row['id_client'], "]' value='", $row['code_client'], "'></td>";
-                                echo "<td><input type='text' name='vil_client[", $row['id_client'], "]' value='", $row['vil_client'], "'></td>";
+
+                                // echo "<td><input type='text' name='vil_client[", $row['id_client'], "]' value='", $row['vil_client'], "'></td>";
+
+                                $req_client = $oCommunes->getCommById($row['vil_client']);
+                                $res = $req_client->fetch(PDO::FETCH_ASSOC);
+                                var_dump($res);
+                                echo "<td><input type='int' name='vil_client[", $row['id_client'], "]' value='",  $res['COL3']. ' '.$res['COL10'], "'></td>";
+
+                                
+                                
                                 echo "<td><input type='text' name='mail_client[", $row['id_client'], "]' value='", $row['mail_client'], "'></td>";
                                 echo "<td><input type='password' name='pass_client[", $row['id_client'], "]' value='", $row['pass_client'], "'></td>";
                                 echo "<td><input type='text' name='statut_client[", $row['id_client'], "]' value='", $row['statut_client'], "'></td>";
@@ -84,8 +101,12 @@ require_once("../class/class.client.php");
                 <label for="code_client" class="formulaire-label">Code postal : </label>
                 <input type="text" name="code_client" id="code_client" class="formulaire-input">
 
-                <label for="vil_client" class="formulaire-label">Ville client : </label>
-                <input type="text" name="vil_client" id="vil_client" class="formulaire-input">
+                <label for="vil_client" class="formulaire-label">Ville : </label>
+                <div class="input_container">
+                    <input type="text" name="vil_client" id="vil_client" onkeyup="autocomplet()" class="formulaire-input">
+                    <input type="text" name="vil_client2" id="vil_client2" class="formulaire-input">
+                    <ul id="id_list_ville"></ul>
+                </div>
 
                 <label for="mail_client" class="formulaire-label">Mail client : </label>
                 <input type="text" name="mail_client" id="mail_client" class="formulaire-input">
