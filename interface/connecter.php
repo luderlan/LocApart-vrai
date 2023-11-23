@@ -19,7 +19,7 @@
         <img class="logo" src="../logo-site/logo-finis.png" alt="">
 
         <ul class="navbar">
-            <li style="display: none;"><a href="../assets/php/template/header.html"><i class="fa-solid fa-lock" style="color: #1b5eaf;"></i> Admin</a></li>
+            <li style="display: none;"><a href="../assets/php/template/header.php"><i class="fa-solid fa-lock" style="color: #1b5eaf;"></i> Admin</a></li>
             <li><a href="accueil.php"><i class="fa-solid fa-house" style="color: #1b5eaf;"></i> Accueil</a></li>
             <li><a href="biens.html"><i class="fa-solid fa-thumbtack" style="color: #1b5eaf;"></i> Nos biens</a></li>
             <li><a href="contact.html"><i class="fa-solid fa-address-book" style="color: #1b5eaf;" ></i> Contact</a></li>
@@ -36,18 +36,19 @@
     <div class="container">
         <div class="form_area">
             <p class="title">Se Connecter</p>
+            <?php if (isset($error)) { echo "<p>$error</p>"; } ?>
             <form action="../assets/php/connexion_formulaire.php" method="POST">
                 <div class="form_group">
                     <label class="sub_title" for="code_client">Email</label>
-                    <input placeholder="Entrer votre email..." name="email" id="email" class="form_style" type="email">
+                    <input placeholder="Entrer votre email..." name="email" id="email" class="form_style" type="email" required>
                 </div>
                 <div class="form_group">
                     <label class="sub_title" for="mdp">Mot de passe</label>
-                    <input placeholder="Entrer votre mot de passe..." name="mdp" id="password" class="form_style" type="password">
+                    <input placeholder="Entrer votre mot de passe..." name="mdp" id="password" class="form_style" type="password" required>
                 </div>
                 <div>
-                    <a href="connecter.html"><button type="submit" class="btn">Se connecter</button></a>
-                    <p>Pas de compte ? <a class="link" href="inscrire.html">S'inscrire !</a></p><a class="link" href=""></a>
+                    <button type="submit" class="btn">Se connecter</button>
+                    <p>Pas de compte ? <a class="link" href="inscrire.html">S'inscrire !</a></p>
                 </div>
             </form>
         </div>

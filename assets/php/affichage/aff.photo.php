@@ -15,7 +15,7 @@ require_once("../class/class.photo.php");
 </head>
 
 <body>
-    <?php include("../template/header.html"); ?>
+    <?php include("../template/header.php"); ?>
     <main>
         <section class="conteneur" id="tableau_Clients">
             <form action="../traitement/trait.client.php" method="post">

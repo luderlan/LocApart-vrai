@@ -1,7 +1,7 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"]) && $_POST["action"] == "create_client") {
-    $nom = $_POST["nom"];
-    $prenom = $_POST["prenom"];
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["email"]) && isset($_POST["mdp"])) {
+    $email = $_POST["email"];
+    $mdp = $_POST["mdp"];
 
     $serveur = "localhost";
     $utilisateur = "root";

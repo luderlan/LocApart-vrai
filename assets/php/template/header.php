@@ -1,3 +1,39 @@
+<?php
+    /*session_start();
+
+    // Connexion à la BDD
+    $host = "localhost";
+    $utilisateur = "root";
+    $mdp = "";
+    $base_de_donnees = "locapart";
+
+    $connexion = new mysqli($host, $utilisateur, $mdp, $base_de_donnees);
+
+    // Vérifiez si les informations d'identification sont correctes
+    if (isset($_POST['admin_log']) && isset($_POST['%Key-Adm!n23%'])) {
+        $login = $_POST['admin_log'];
+        $mot_de_passe = $_POST['%Key-Adm!n23%'];
+
+        // Utilisez une requête SQL pour vérifier les informations d'identification
+        $requete = "SELECT * FROM users WHERE login='$login' AND mot_de_passe='mot_de_passe'";
+        $resultat = $connexion->query($requete);
+
+        if ($resultat->num_rows > 0) {
+            // Admin = OUI donc : 
+            $_SESSION['admin'] = true;
+        } else {
+            // Admin = NON donc :
+            header("Location: ../../../interface/accueil.php");
+            exit();
+        }
+    } else {
+        // Les informations d'identification n'ont pas été soumises, redirigez l'utilisateur
+        header("Location: ../../../interface/accueil.php");
+        exit();
+    }
+    */
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,8 +47,16 @@
         <img class="logo" src="../../../logo-site/logo-finis.png" alt="">
 
         <ul class="navbar">
-            <li class="active"><a href="../template/header.html"><i class="fa-solid fa-lock" style="color: #1b5eaf;"></i> Admin</a></li>
-            <li><a href="../../../interface/accueil.html"><i class="fa-solid fa-house" style="color: #1b5eaf;"></i> Accueil</a></li>
+        <?php
+        /*
+            session_start();
+
+            if (isset($_SESSION['admin']) && $_SESSION['admin'] === true) {
+                echo '<li class="active"><a href="../template/header.php"><i class="fa-solid fa-lock" style="color: #1b5eaf;"></i> Admin</a></li>';
+            }
+        */
+        ?>
+            <li><a href="../../../interface/accueil.php"><i class="fa-solid fa-house" style="color: #1b5eaf;"></i> Accueil</a></li>
             <li><a href="../../../interface/biens.html"><i class="fa-solid fa-thumbtack" style="color: #1b5eaf;"></i> Nos biens</a></li>
             <li><a href="../../../interface/contact.html"><i class="fa-solid fa-address-book" style="color: #1b5eaf;" ></i> Contact</a></li>
         </ul>

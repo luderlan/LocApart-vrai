@@ -15,7 +15,7 @@ require_once("../class/type_bien.php");
 </head>
 
 <body>
-    <?php include("../template/header.html"); ?>
+    <?php include("../template/header.php"); ?>
     <main>
         <section class="conteneur" id="tableau_typebien">
             <form action="../traitement/type_bien.php" method="post">

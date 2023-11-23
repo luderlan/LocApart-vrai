@@ -1,3 +1,8 @@
+<?php
+// Démarrez la session
+//session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -19,14 +24,22 @@
         <img class="logo" src="../logo-site/logo-finis.png" alt="">
 
         <ul class="navbar">
-            <li style="display: none;"><a href="../assets/php/template/header.html"><i class="fa-solid fa-lock" style="color: #1b5eaf;"></i> Admin</a></li>
+        <?php
+        /*
+            session_start();
+
+            if (isset($_SESSION['admin']) && $_SESSION['admin'] === true) {
+                echo '<li class="active"><a href="../template/header.php"><i class="fa-solid fa-lock" style="color: #1b5eaf;"></i> Admin</a></li>';
+            }
+        */
+        ?>
             <li><a href="#" class="active"><i class="fa-solid fa-house" style="color: #1b5eaf;"></i> Accueil</a></li>
             <li><a href="biens.html"><i class="fa-solid fa-thumbtack" style="color: #1b5eaf;"></i> Nos biens</a></li>
             <li><a href="contact.html"><i class="fa-solid fa-address-book" style="color: #1b5eaf;" ></i> Contact</a></li>
         </ul>
 
         <div class="navbar">
-            <a href="connecter.html" class="user"><i class="fa-regular fa-user" style="color: #1b5eaf;"></i> Se Connecter</a>
+            <a href="connecter.php" class="user"><i class="fa-regular fa-user" style="color: #1b5eaf;"></i> Se Connecter</a>
             <a href="inscrire.html"><i class="fa-regular fa-address-card" style="color: #1b5eaf;"></i> S'inscrire</a>
             <div class="bx bx-menu" id="menu-icon"></div>
         </div>
