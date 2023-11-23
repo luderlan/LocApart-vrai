@@ -12,15 +12,15 @@ require_once("../class/class.photo.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photos - Loc'Appart</title>
-    <script type="text/javascript" src="../js/script.autocomp.js"></script>
-    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/autocomp/script.photo.js"></script>
+    <script type="text/javascript" src="../../js/autocomp/jquery.min.js"></script>
 </head>
 
 <body>
     <?php include("../template/header.html"); ?>
     <main>
-        <section class="conteneur" id="tableau_Clients">
-            <form action="../traitement/trait.client.php" method="post">
+        <section class="conteneur" id="tableau_Photos">
+            <form action="../traitement/trait.photo.php" method="post">
                 <table class="tableau">
                     <thead class="tableau_entete">
 
@@ -45,7 +45,13 @@ require_once("../class/class.photo.php");
 
                                 echo "<td><input type='text' name='nom_photo[", $row['id_photo'], "]' value='", $row['nom_photo'], "'></td>";
                                 echo "<td><input type='text' name='lien_photo[", $row['id_photo'], "]' value='", $row['lien_photo'], "'></td>";
-                                
+                                echo '<label for="id_bien" class="formulaire-label">bien : </label>
+                                <div class="input_container">
+                                    <input type="text" name="id_bien" id="id_bien" onkeyup="autocomplet()" class="formulaire-input">
+                                    <input type="text" name="id_bien2" id="id_bien2" class="formulaire-input">
+                                    <ul id="id_list_bien"></ul>
+                                </div>';
+                            
 
                 
                                 
@@ -75,9 +81,10 @@ require_once("../class/class.photo.php");
 
                 <label for="id_bien" class="formulaire-label">bien : </label>
                 <div class="input_container">
-                    <input type="text" id="id_bien" onkeyup="autocomplet()">
-                    <ul id="nom_list_id"></ul>
-
+                    <input type="text" name="id_bien" id="id_bien" onkeyup="autocomplet()" class="formulaire-input">
+                    <input type="text" name="id_bien2" id="id_bien2" class="formulaire-input">
+                    <ul id="id_list_bien"></ul>
+                </div>
 
 
 
