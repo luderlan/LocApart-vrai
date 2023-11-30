@@ -1,225 +1,225 @@
-<?php
+    <?php
 
-require_once("../include/connexion.inc.php");
-require_once("../class/class.client.php");
-require_once("../class/class.comm.php");
-
-
-?>
-
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clients - Loc'Appart</title>
-    <script type="text/javascript" src="../../js/autocomp/script.client.js"></script>
-    <script type="text/javascript" src="../../js/autocomp/jquery.min.js"></script>
-</head>
-
-<body>
-    <?php include("../template/header.php"); ?>
-    <main>
-        <section class="conteneur" id="tableau_Clients">
-            <form action="../traitement/trait.client.php" method="post">
-                <table class="tableau">
-                    <thead class="tableau_entete">
-
-                        <tr>
-                            <th>ID Clients</th>
-                            <th>Nom client</th>
-                            <th>Prenom client</th>
-                            <th>Rue client</th>
-                            <th>Code Postal client</th>
-                            <th>Ville client</th>
-                            <th>Mail client</th>
-                            <th>Mdp client</th>
-                            <th>Statut client</th>
-                            <th>Valid client</th>
-                            <th>Actions</th>
-                        </tr>
-
-                    </thead>
-                    <tbody class="tableau_corps">
-                        <?php
-                        $oClient = new Client($con);
-                        $result = $oClient->selectClient();
-
-                        $oCommunes = new Communes($con);
-                        // $resultat = $oCommunes->selectCommune();
+    require_once("../include/connexion.inc.php");
+    require_once("../class/class.client.php");
+    require_once("../class/class.comm.php");
 
 
-                        if ($result->rowCount() > 0) {
-                            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+    ?>
 
-                                echo "<tr>";
-                                echo "<td>", $row['id_client'], "</td>";
+    <!DOCTYPE html>
+    <html lang="fr">
 
-                                echo "<td><input type='text' name='nom_client[", $row['id_client'], "]' value='", $row['nom_client'], "'></td>";
-                                echo "<td><input type='text' name='prenom_client[", $row['id_client'], "]' value='", $row['prenom_client'], "'></td>";
-                                echo "<td><input type='text' name='rue_client[", $row['id_client'], "]' value='", $row['rue_client'], "'></td>";
-                                echo "<td><input type='text' name='code_client[", $row['id_client'], "]' value='", $row['code_client'], "'></td>";
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Clients - Loc'Appart</title>
+        <script type="text/javascript" src="../../js/autocomp/script.client.js"></script>
+        <script type="text/javascript" src="../../js/autocomp/jquery.min.js"></script>
+    </head>
 
-                                // echo "<td><input type='text' name='vil_client[", $row['id_client'], "]' value='", $row['vil_client'], "'></td>";
+    <body>
+        <?php include("../template/header.php"); ?>
+        <main>
+            <section class="conteneur" id="tableau_Clients">
+                <form action="../traitement/trait.client.php" method="post">
+                    <table class="tableau">
+                        <thead class="tableau_entete">
 
-                                $req_client = $oCommunes->getCommById($row['vil_client']);
-                                $res = $req_client->fetch(PDO::FETCH_ASSOC);
-                                var_dump($res);
-                                echo "<td><input type='int' name='vil_client[", $row['id_client'], "]' value='",  $res['COL3']. ' '.$res['COL10'], "'></td>";
+                            <tr>
+                                <th>ID Clients</th>
+                                <th>Nom client</th>
+                                <th>Prenom client</th>
+                                <th>Rue client</th>
+                                <th>Code Postal client</th>
+                                <th>Ville client</th>
+                                <th>Mail client</th>
+                                <th>Mdp client</th>
+                                <th>Statut client</th>
+                                <th>Valid client</th>
+                                <th>Actions</th>
+                            </tr>
 
-                                
-                                
-                                echo "<td><input type='text' name='mail_client[", $row['id_client'], "]' value='", $row['mail_client'], "'></td>";
-                                echo "<td><input type='password' name='pass_client[", $row['id_client'], "]' value='", $row['pass_client'], "'></td>";
-                                echo "<td><input type='text' name='statut_client[", $row['id_client'], "]' value='", $row['statut_client'], "'></td>";
-                                echo "<td><input type='text' name='valid_client[", $row['id_client'], "]' value='", $row['valid_client'], "'></td>";
+                        </thead>
+                        <tbody class="tableau_corps">
+                            <?php
+                            $oClient = new Client($con);
+                            $result = $oClient->selectClient();
 
-                                echo "<td><button class='btn btn-primary' name='updateCli' value='", $row['id_client'], "' type=submit'>Modifier</button>
-                                      <button class='btn btn-danger' name='deleteCli' value='", $row['id_client'], "' type=submit'>Supprimer</button></td>";
-                                echo "</tr>";
-                            }                            
-                        } else {
-                            echo "<p>Aucun résultat trouvé.</p>";
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </form>
-
-            <form action="../insert/insert_client.php" method="post" class="formulaire-insertion">
-
-                <label for="nom_client" class="formulaire-label">Nom Client : </label>
-                <input type="text" name="nom_client" id="nom_client" class="formulaire-input">
-
-                <label for="prenom_client" class="formulaire-label">Prenom Client : </label>
-                <input type="text" name="prenom_client" id="prenom_client" class="formulaire-input">
-
-                <label for="rue_client" class="formulaire-label">Rue client : </label>
-                <input type="text" name="rue_client" id="rue_client" class="formulaire-input">
-
-                <label for="code_client" class="formulaire-label">Code postal : </label>
-                <input type="text" name="code_client" id="code_client" class="formulaire-input">
-
-                <label for="vil_client" class="formulaire-label">Ville : </label>
-                <div class="input_container">
-                    <input type="text" name="vil_client" id="vil_client" onkeyup="autocomplet()" class="formulaire-input">
-                    <input type="text" name="vil_client2" id="vil_client2" class="formulaire-input">
-                    <ul id="id_list_ville"></ul>
-                </div>
-
-                <label for="mail_client" class="formulaire-label">Mail client : </label>
-                <input type="text" name="mail_client" id="mail_client" class="formulaire-input">
-
-                <label for='pass_client' class='formulaire-label'>Mot de passe client : </label>
-                <input type='password' name='pass_client' id='pass_client' class='formulaire-input'>
+                            $oCommunes = new Communes($con);
+                            // $resultat = $oCommunes->selectCommune();
 
 
-                <label for="statut_client" class="formulaire-label">Statut du client : </label>
-                <input type="text" name="statut_client" id="statut_client" class="formulaire-input">
+                            if ($result->rowCount() > 0) {
+                                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 
-                <label for="valid_client" class="formulaire-label">Client valide ? </label>
-                <input type="text" name="valid_client" id="valid_client" class="formulaire-input">
+                                    echo "<tr>";
+                                    echo "<td>", $row['id_client'], "</td>";
 
-                <input type="submit" value="Ajouter un Client" class="bouton-primaire">
-            </form>
-        </section>
-    </main>
-</body>
-</html>
+                                    echo "<td><input type='text' name='nom_client[", $row['id_client'], "]' value='", $row['nom_client'], "'></td>";
+                                    echo "<td><input type='text' name='prenom_client[", $row['id_client'], "]' value='", $row['prenom_client'], "'></td>";
+                                    echo "<td><input type='text' name='rue_client[", $row['id_client'], "]' value='", $row['rue_client'], "'></td>";
+                                    echo "<td><input type='text' name='code_client[", $row['id_client'], "]' value='", $row['code_client'], "'></td>";
 
-<style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        main {
-            max-width:1500px;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
-        }
+                                    // echo "<td><input type='text' name='vil_client[", $row['id_client'], "]' value='", $row['vil_client'], "'></td>";
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+                                    $req_client = $oCommunes->getCommById($row['vil_client']);
+                                    $res = $req_client->fetch(PDO::FETCH_ASSOC);
+                                    var_dump($res);
+                                    echo "<td><input type='int' name='vil_client[", $row['id_client'], "]' value='",  $res['COL3']. ' '.$res['COL10'], "'></td>";
 
-        th, td {
-            padding: 6px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
+                                    
+                                    
+                                    echo "<td><input type='text' name='mail_client[", $row['id_client'], "]' value='", $row['mail_client'], "'></td>";
+                                    echo "<td><input type='password' name='pass_client[", $row['id_client'], "]' value='", $row['pass_client'], "'></td>";
+                                    echo "<td><input type='text' name='statut_client[", $row['id_client'], "]' value='", $row['statut_client'], "'></td>";
+                                    echo "<td><input type='text' name='valid_client[", $row['id_client'], "]' value='", $row['valid_client'], "'></td>";
 
-        th {
-            background-color: #323232;
-            color: white;
-        }
+                                    echo "<td><button class='btn btn-primary' name='updateCli' value='", $row['id_client'], "' type=submit'>Modifier</button>
+                                        <button class='btn btn-danger' name='deleteCli' value='", $row['id_client'], "' type=submit'>Supprimer</button></td>";
+                                    echo "</tr>";
+                                }                            
+                            } else {
+                                echo "<p>Aucun résultat trouvé.</p>";
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </form>
 
-        input[type="text"] {
-            padding: 4px;
-            margin-right: 5px;
-            width: 100%;
-        }
+                <form action="../insert/insert_client.php" method="post" class="formulaire-insertion">
 
-        .formulaire-insertion {
-            margin-top: 10px;
-        }
+                    <label for="nom_client" class="formulaire-label">Nom Client : </label>
+                    <input type="text" name="nom_client" id="nom_client" class="formulaire-input">
 
-        .formulaire-label {
-            display: block;
-            margin-bottom: 8px;
+                    <label for="prenom_client" class="formulaire-label">Prenom Client : </label>
+                    <input type="text" name="prenom_client" id="prenom_client" class="formulaire-input">
 
-        }
+                    <label for="rue_client" class="formulaire-label">Rue client : </label>
+                    <input type="text" name="rue_client" id="rue_client" class="formulaire-input">
 
-        .formulaire-input {
-            width: 25%;
-            padding: 8px;
-            margin-bottom: 20px;
-        }
+                    <label for="code_client" class="formulaire-label">Code postal : </label>
+                    <input type="text" name="code_client" id="code_client" class="formulaire-input">
 
-        .bouton-primaire {
-            background-color: #4caf50;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+                    <label for="vil_client" class="formulaire-label">Ville : </label>
+                    <div class="input_container">
+                        <input type="text" name="vil_client" id="vil_client" onkeyup="autocomplet()" class="formulaire-input">
+                        <input type="text" name="vil_client2" id="vil_client2" class="formulaire-input">
+                        <ul id="id_list_ville"></ul>
+                    </div>
 
-        .bouton-primaire:hover {
-            background-color: #45a049;
-        }
+                    <label for="mail_client" class="formulaire-label">Mail client : </label>
+                    <input type="text" name="mail_client" id="mail_client" class="formulaire-input">
 
-        .btn {
-            padding: 8px 12px;
-            margin-right: 5px;
-            cursor: pointer;
-        }
+                    <label for='pass_client' class='formulaire-label'>Mot de passe client : </label>
+                    <input type='password' name='pass_client' id='pass_client' class='formulaire-input'>
 
-        .btn-primary {
-            background-color: #1b5eaf;
-            color: white;
-            border: none;
-            border-radius: 4px;
-        }
 
-        .btn-danger {
-            background-color: #dc3545;
-            color: white;
-            border: none;
-            border-radius: 4px;
-        }
+                    <label for="statut_client" class="formulaire-label">Statut du client : </label>
+                    <input type="text" name="statut_client" id="statut_client" class="formulaire-input">
 
-        .section-admin {
-        margin-left: 30px;
-        display: none;
-        }
+                    <label for="valid_client" class="formulaire-label">Client valide ? </label>
+                    <input type="text" name="valid_client" id="valid_client" class="formulaire-input">
 
-    </style>
-</html>
+                    <input type="submit" value="Ajouter un Client" class="bouton-primaire">
+                </form>
+            </section>
+        </main>
+    </body>
+    </html>
+
+    <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+            }
+            main {
+                max-width:1500px;
+                margin: 20px auto;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+
+            th, td {
+                padding: 6px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+
+            th {
+                background-color: #323232;
+                color: white;
+            }
+
+            input[type="text"] {
+                padding: 4px;
+                margin-right: 5px;
+                width: 100%;
+            }
+
+            .formulaire-insertion {
+                margin-top: 10px;
+            }
+
+            .formulaire-label {
+                display: block;
+                margin-bottom: 8px;
+
+            }
+
+            .formulaire-input {
+                width: 25%;
+                padding: 8px;
+                margin-bottom: 20px;
+            }
+
+            .bouton-primaire {
+                background-color: #4caf50;
+                color: white;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            .bouton-primaire:hover {
+                background-color: #45a049;
+            }
+
+            .btn {
+                padding: 8px 12px;
+                margin-right: 5px;
+                cursor: pointer;
+            }
+
+            .btn-primary {
+                background-color: #1b5eaf;
+                color: white;
+                border: none;
+                border-radius: 4px;
+            }
+
+            .btn-danger {
+                background-color: #dc3545;
+                color: white;
+                border: none;
+                border-radius: 4px;
+            }
+
+            .section-admin {
+            margin-left: 30px;
+            display: none;
+            }
+
+        </style>
+    </html>
