@@ -1,6 +1,5 @@
 <?php
-// Démarrez la session
-//session_start();
+    require_once("../assets/php/include/connexion.inc.php");
 ?>
 
 <!DOCTYPE html>
@@ -24,15 +23,6 @@
         <img class="logo" src="../logo-site/logo-finis.png" alt="">
 
         <ul class="navbar">
-        <?php
-        /*
-            session_start();
-
-            if (isset($_SESSION['admin']) && $_SESSION['admin'] === true) {
-                echo '<li class="active"><a href="../template/header.php"><i class="fa-solid fa-lock" style="color: #1b5eaf;"></i> Admin</a></li>';
-            }
-        */
-        ?>
             <li><a href="#" class="active"><i class="fa-solid fa-house" style="color: #1b5eaf;"></i> Accueil</a></li>
             <li><a href="biens.html"><i class="fa-solid fa-thumbtack" style="color: #1b5eaf;"></i> Nos biens</a></li>
             <li><a href="contact.html"><i class="fa-solid fa-address-book" style="color: #1b5eaf;" ></i> Contact</a></li>
@@ -48,6 +38,7 @@
     <section class="une-section">
         <h2 class="bien-une">Biens à la une :</h2>
     </section>  
+
     <section class="content-section">
         <div class="content-item">
             <label for="img1" class="arrow left"><i class="fas fa-chevron-left"></i></label>
