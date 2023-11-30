@@ -21,7 +21,7 @@ function autocomplet() {
 function set_item(item, item2) {
 	// change input value
 	$('#vil_client').val(item);
-	$('#vil_client2').val(item);
+	$('#code_comm').val(item2);
 	// hide proposition list
 	$('#id_list_ville').hide();
 }
