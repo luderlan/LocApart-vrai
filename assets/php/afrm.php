@@ -1,3 +1,43 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "locapart";
+
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+}
+catch (PDOException $e) {
+    echo "Erreur de connexion à la base de données : " . $e->getMessage();
+}
+
+if (isset($_POST['login'])) {
+    $log = ($_POST['login']);
+    $mdp = ($_POST['mdp']);
+
+    $stmt = $conn->prepare("SELECT * FROM users WHERE admin_log=? AND mot_de_passe=?");
+    $stmt->bindParam(1, $log);
+    $stmt->bindParam(2, $mdp);
+    $stmt->execute();
+    $result = $stmt->fetchAll();
+
+    if ($result) {
+        session_start();
+        $_SESSION['admin_log'] = $log;
+
+        header("Location:../php/template/header.php");
+        exit();
+    } else {
+        echo "Login ou mot de passe incorrect";
+    }
+
+    $stmt->closeCursor(); // Close the cursor to enable the next query to be executed
+}
+
+$conn = null; // Close the connection
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,35 +82,6 @@
     <br><br> 
 </body>
 </html>
-
-<?php
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "locapart";
-
-  $conn = new mysqli($servername, $username, $password, $dbname);
-
-  if ($conn->connect_error) {
-      die("La connexion a échoué : " . $conn->connect_error);
-  }
-
-  $login = $_POST['admin_log'];
-  $mdp = $_POST['mot_de_passe'];
-
-  $sql = "SELECT * FROM users WHERE login='$admin_log' AND mdp='$mot_de_passe'";
-  $result = $conn->query($sql);
-
-  if ($result->num_rows > 0) {
-      header("Location: ../template/header.php");
-      exit();
-  } else {
-      echo "Login ou mot de passe incorrect";
-  }
-
-  $conn->close();
-?>
-
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Finlandica:wght@500&display=swap');
