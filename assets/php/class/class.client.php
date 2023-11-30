@@ -9,8 +9,7 @@ class Client
     private $nom_client;
     private $prenom_client;
     private $rue_client;
-    private $code_client;
-    private $vil_client;
+    private $code_comm;
     private $mail_client;
     private $pass_client;
     private $statut_client;
@@ -43,14 +42,9 @@ class Client
         return $this->rue_client;
     }
 
-    public function getCodeClient()
+    public function getCodeComm()
     {
-        return $this->code_client;
-    }
-
-    public function getVilleClient()
-    {
-        return $this->vil_client;
+        return $this->code_comm;
     }
 
     public function getMailClient()
@@ -89,14 +83,9 @@ class Client
         $this->rue_client = $l;
     }
 
-    public function SetCodeClient($l)
+    public function SetCodeComm($l)
     {
-        $this->code_client = $l;
-    }
-
-    public function setVilleClient($l)
-    {
-        $this->vil_client = $l;
+        $this->code_comm = $l;
     }
 
     public function setMailClient($l)
@@ -122,14 +111,13 @@ class Client
         return $stmt;
     }
 
-    public function insertClient($nom,$prenom,$rue,$code,$ville,$mail,$pass,$statut,$valid)
+    public function insertClient($nom,$prenom,$rue,$code,$mail,$pass,$statut,$valid)
     {
         $data = [
             ":nom" => $nom,
             ":prenom" => $prenom,
             ":rue" => $rue,
             ":cod" => $code,
-            ":ville" => $ville,
             ":mail" => $mail,
             ":mdp" => $pass,
             ":statut" => $statut,
@@ -137,15 +125,15 @@ class Client
         ];
 
         $sql = "INSERT INTO clients (nom_client, prenom_client, rue_client,
-        code_client, vil_client, mail_client, pass_client, statut_client, valid_client)
-        VALUES (:nom, :prenom, :rue, :cod, :ville, :mail, :mdp, :statut, :valide)";
+        code_comm, mail_client, pass_client, statut_client, valid_client)
+        VALUES (:nom, :prenom, :rue, :cod, :mail, :mdp, :statut, :valide)";
 
 
         $stmt = $this->con->prepare($sql);
         $stmt->execute($data);
     }
 
-    public function updateClient($id, $nom,$prenom,$rue,$code,$ville,$mail,$pass,$statut,$valid)
+    public function updateClient($id, $nom,$prenom,$rue,$code,$mail,$pass,$statut,$valid)
     {
 
         $data = [
@@ -154,14 +142,13 @@ class Client
             ":prenom" => $prenom,
             ":rue" => $rue,
             ":cod" => $code,
-            ":ville" => $ville,
             ":mail" => $mail,
             ":mdp" => MD5($pass),
             ":statut" => $statut,
             ":valide" => $valid
         ];
 
-        $sql = "UPDATE clients SET nom_client = :nom, prenom_client = :prenom, rue_client = :rue, code_client = :cod, vil_client = :ville,
+        $sql = "UPDATE clients SET nom_client = :nom, prenom_client = :prenom, rue_client = :rue, code_comm = :cod,
         mail_client = :mail, pass_client = :mdp, statut_client = :statut, valid_client = :valide
         WHERE id_client = :idc";
 
@@ -183,7 +170,7 @@ class Client
     {
         $data = [":idc" => $id];
 
-        $sql = "SELECT nom_client,prenom_client,rue_client, code_client,ville_client,mail_client,pass_client,statut_client,valid_client
+        $sql = "SELECT nom_client,prenom_client,rue_client, code_comm,mail_client,pass_client,statut_client,valid_client
         FROM clients 
         WHERE id_client = :idc";
         
