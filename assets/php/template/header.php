@@ -29,9 +29,9 @@
         <br>
         <br>
         <a href="../affichage/aff.client.php" class="button">Clients</a>
-        <a href="" class="button">Biens</a>
-        <a href="" class="button">Photos</a>
-        <a href="" class="button">Réservation</a>
+        <a href="../affichage/aff.biens.php" class="button">Biens</a>
+        <a href="../affichage/aff.photo.php" class="button">Photos</a>
+        <a href="../affichage/aff.reservation.php" class="button">Réservation</a>
         <a href="../affichage/type_bien.php" class="button">Type bien</a>
     </div>
 </body>
