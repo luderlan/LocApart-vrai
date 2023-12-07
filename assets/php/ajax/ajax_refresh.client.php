@@ -18,7 +18,6 @@ foreach ($list as $res) {
 	//  affichage
 	$Listecomm = str_replace($_POST['keyword'], '<b>'.$_POST['keyword'].'</b>', $res['COL10'].' '.$res['COL3'].' '.$res['COL10']);
 	// sélection 
-	echo '<li onclick="set_item(\''.str_replace("'", "\'", $res['COL3'].' '.$res['COL10']).'\',\''.str_replace("'", "\'", $res['COL1']).'\')">'.$Listecomm.'</li>';
+	echo '<li onclick="set_item(\''.str_replace("'", "\'", $res['COL3'].' '.$res['COL10']).'\',\''.str_replace("'", "\'", $res['id_comm']).'\')">'.$Listecomm.'</li>';
 }
 ?>
-
