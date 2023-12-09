@@ -24,7 +24,7 @@
 
         <ul class="navbar">
             <li><a href="#" class="active"><i class="fa-solid fa-house" style="color: #1b5eaf;"></i> Accueil</a></li>
-            <li><a href="biens.html"><i class="fa-solid fa-thumbtack" style="color: #1b5eaf;"></i> Nos biens</a></li>
+            <li><a href="biens.php"><i class="fa-solid fa-thumbtack" style="color: #1b5eaf;"></i> Nos biens</a></li>
             <li><a href="contact.html"><i class="fa-solid fa-address-book" style="color: #1b5eaf;" ></i> Contact</a></li>
         </ul>
 
@@ -51,7 +51,7 @@ if ($result->rowCount() > 0) {
         echo "<section class='content-section'>";
             echo "<div class='content-item'>";
                 echo "<i class='fa-solid fa-heart clickable' style='color: #1b5eaf;'></i>";
-                echo "<a href='pageBien.html'>";
+                echo "<a href='pageBien.php'>";
                     echo "<img src='../assets/img/bien1/img1.jpg' alt=''>";
                     echo "<h3>{$property['nom_bien']}</h3>";
                     echo "<div class='content'>";
@@ -69,12 +69,13 @@ if ($result->rowCount() > 0) {
 } else {
     echo "<p>Aucun bien disponible.</p>";
 }
-?>
+?>  
+</body>
 
     <!-- <section class="content-section">
         <div class="content-item">
             <i class="fa-solid fa-heart clickable" style="color: #1b5eaf;"></i>
-            <a href="pageBien.html">
+            <a href="pageBien.php">
                 <img src="../assets/img/bien1/img1.jpg" alt="Image 1">
                 <h2>Paristot, France</h2>
                 <p>Particulier <br> 16-23 Dec. <br> <span style="color: #1b5eaf;"><b>294 €</b></span> par nuit</p>
@@ -82,7 +83,7 @@ if ($result->rowCount() > 0) {
         </div>
         <div class="content-item">
             <i class="fa-solid fa-heart clickable" style="color: #1b5eaf;"></i>
-            <a href="pageBien.html">
+            <a href="pageBien.php">
                 <img src="../assets/img/bien2/img1.jpg" alt="Image 2">
                 <h2>Cremps, France</h2>
                 <p>Particulier <br> 22-28 Oct. <br> <span style="color: #1b5eaf;"><b>332 €</b></span> par nuit</p>
@@ -90,7 +91,7 @@ if ($result->rowCount() > 0) {
         </div>
         <div class="content-item">
             <i class="fa-solid fa-heart clickable" style="color: #1b5eaf;"></i>
-            <a href="pageBien.html">
+            <a href="pageBien.php">
                 <img src="../assets/img/bien3/img1.jpeg" alt="Image 3">
                 <h2>Sanvensa, France</h2>
                 <p>Particulier <br> 9-15 Oct. <br> <span style="color: #1b5eaf;"><b>245 €</b></span> par nuit</p>
@@ -98,7 +99,7 @@ if ($result->rowCount() > 0) {
         </div>
         <div class="content-item">
             <i class="fa-solid fa-heart clickable" style="color: #1b5eaf;"></i>
-            <a href="pageBien.html">
+            <a href="pageBien.php">
                 <img src="../assets/img/bien4/img1.jpg" alt="Image 4">
                 <h2>Bellegarde-Marsal, France</h2>
                 <p>Particulier <br> 2-8 Nov. <br> <span style="color: #1b5eaf;"><b>325 €</b></span> par nuit</p>
@@ -109,7 +110,7 @@ if ($result->rowCount() > 0) {
 
         <div class="content-item">
             <i class="fa-solid fa-heart clickable" style="color: #1b5eaf;"></i>
-            <a href="pageBien.html">
+            <a href="pageBien.php">
                 <img src="../assets/img/bien5/img1.jpg" alt="Image 5">
                 <h2>Tonnac, France</h2>
                 <p>Particulier <br> 6-11 Nov. <br> <span style="color: #1b5eaf;"><b>162 €</b></span> par nuit</p>
@@ -117,7 +118,7 @@ if ($result->rowCount() > 0) {
         </div>
         <div class="content-item">
             <i class="fa-solid fa-heart clickable" style="color: #1b5eaf;"></i>
-            <a href="pageBien.html">
+            <a href="pageBien.php">
                 <img src="../assets/img/bien6/img1.jpg" alt="Image 6">
                 <h2>Le Dourn, France</h2>
                 <p>Particulier <br> 26-01 Jan. <br> <span style="color: #1b5eaf;"><b>429 €</b></span> par nuit</p>
@@ -125,7 +126,7 @@ if ($result->rowCount() > 0) {
         </div>
         <div class="content-item">
             <i class="fa-solid fa-heart clickable" style="color: #1b5eaf;"></i>
-            <a href="pageBien.html">
+            <a href="pageBien.php">
                 <img src="../assets/img/bien7/img1.jpg" alt="Image 7">
                 <h2>Mouillac, France</h2>
                 <p>Particulier <br> 23-29 Dec. <br> <span style="color: #1b5eaf;"><b>327 €</b></span> par nuit</p>
@@ -133,7 +134,7 @@ if ($result->rowCount() > 0) {
         </div>
         <div class="content-item">
             <i class="fa-solid fa-heart clickable" style="color: #1b5eaf;"></i>
-            <a href="pageBien.html">
+            <a href="pageBien.php">
                 <img src="../assets/img/bien8/img1.jpg" alt="Image 8">
                 <h2>Itzac, France</h2>
                 <p>Particulier <br> 10-15 Dec. <br> <span style="color: #1b5eaf;"><b>242 €</b></span> par nuit</p>
@@ -141,7 +142,6 @@ if ($result->rowCount() > 0) {
         </div>
     </section> -->
 
-</body>
 <footer style="background-color: #ddd0c8; padding-top: 40px;">
     <div class="card">
         <a href="#" class="socialContainer containerOne">

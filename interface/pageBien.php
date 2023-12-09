@@ -1,3 +1,7 @@
+<?php
+    require_once("../assets/php/include/connexion.inc.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +23,7 @@
       <ul class="navbar">
         <li style="display: none;"><a href="../assets/php/template/header.php"><i class="fa-solid fa-lock" style="color: #1b5eaf;"></i> Admin</a></li>
           <li><a href="accueil.php"><i class="fa-solid fa-house" style="color: #1b5eaf;"></i> Accueil</a></li>
-          <li><a href="biens.html"><i class="fa-solid fa-thumbtack" style="color: #1b5eaf;"></i> Nos biens</a></li>
+          <li><a href="biens.php"><i class="fa-solid fa-thumbtack" style="color: #1b5eaf;"></i> Nos biens</a></li>
           <li><a href="contact.html"><i class="fa-solid fa-address-book" style="color: #1b5eaf;" ></i> Contact</a></li>
       </ul>
 
@@ -34,7 +38,7 @@
     <div class="wrapper">
       <i id="left" class="fa-solid fa-angle-left"></i>
         <div class="carousel">
-          <img src="../assets/img/bien1/img1.jpg" alt="img" draggable="false">
+          <img src="../assets/img/bien1/img1.jpg" alt="img" draggable="false" class="first-photo">
           <img src="../assets/img/bien2/img1.jpg" alt="img" draggable="false">
           <img src="../assets/img/bien3/img1.jpeg" alt="img" draggable="false">
           <img src="../assets/img/bien4/img1.jpg" alt="img" draggable="false">
@@ -47,6 +51,10 @@
         <i id="right" class="fa-solid fa-angle-right"></i>
     </div>
     <script src="../assets/js/carrousel.js" defer></script>
+    <hr class="hr">
+      <div class="description-bien">
+        <h2>Logement</h2>
+      </div>
 </body>
 
 <footer>

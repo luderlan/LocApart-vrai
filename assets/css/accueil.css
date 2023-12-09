@@ -159,15 +159,12 @@ header {
     background-color: #a3a3a32f;
     padding-top: 50px;
     padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 127px;
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    align-items: flex-start; /* Pour aligner les éléments en haut */
+    justify-content: flex-start;
 }
 
 .content-item {
+    background: #acb8c6;
     text-align: center;
     max-width: 400px;
     margin-bottom: 50px;
@@ -176,6 +173,15 @@ header {
     overflow: hidden;
     margin: 5px;
     width: calc(25% - 10px);
+    border-radius: 12px;
+}
+
+h3 {
+    color: #1b5eaf;
+}
+
+i {
+    color: #1b5eaf;
 }
 
 @media (max-width: 1280px) {

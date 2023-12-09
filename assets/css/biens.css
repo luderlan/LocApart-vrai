@@ -159,12 +159,8 @@ header {
     background-color: #a3a3a32f;
     padding-top: 50px;
     padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 127px;
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    align-items: flex-start; /* Pour aligner les éléments en haut */
+    justify-content: flex-start;
 }
 
 .content-item {
