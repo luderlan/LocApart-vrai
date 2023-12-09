@@ -26,6 +26,7 @@
             window.location.href = "../template/header.php";
         }
     </script>
+    <br><br><br>
     <main>
         <section class="conteneur" id="tableau_Photos">
             <form action="../traitement/trait.photo.php" method="post">
@@ -65,14 +66,11 @@
                     </tbody>
                 </table>
             </form>
-
             <form action="../insert/insert.photo.php" method="post" class="formulaire-insertion">
                 <label for="nom_photo" class="formulaire-label">Nom photo : </label>
                 <input type="text" name="nom_photo" id="nom_photo" class="formulaire-input">
-
                 <label for="lien_photo" class="formulaire-label">Lien photo : </label>
                 <input type="text" name="lien_photo" id="lien_photo" class="formulaire-input">
-
                 <label for="id_bien" class="formulaire-label">bien : </label>
                 <div class="input_container">
                     <input type="text" name="id_bien" id="id_bien" onkeyup="autocomplet()" class="formulaire-input">
@@ -192,7 +190,7 @@
         color: #323232;
         transition: color 0.7s 0.4s ease-out;
         text-align: center;
-        }
+    }
 
     .bouton span {
         margin: 10px;

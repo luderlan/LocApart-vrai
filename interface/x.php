@@ -3,7 +3,7 @@
         foreach ($biens as $bien) {
             ?>
             <div class='box'>
-            <img src='../../front/img/home4.jpg' alt=''>
+            <img src='../img/bien1/img1.jpg' alt=''>
             <h3><?php echo $bien['nom_bien']; ?></h3>
             <div class='content'>
                 <div class='text'>

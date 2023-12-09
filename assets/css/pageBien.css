@@ -332,6 +332,7 @@ footer {
     user-select: none;
     margin-left: 14px;
     width: calc(100% / 3);
+    border-radius: 9px;
   }
   .carousel img:first-child{
     margin-left: 0px;

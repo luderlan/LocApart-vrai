@@ -39,10 +39,40 @@
         <h2 class="bien-une">Biens à la une :</h2>
     </section>  
 
-    <section class="content-section">
+<?php
+    // Récupérer les propriétés de la base de données
+    $query = "SELECT * FROM biens";
+    $result = $con->query($query);
+
+// Vérifiez s'il y a des propriétés
+if ($result->rowCount() > 0) {
+    while ($property = $result->fetch(PDO::FETCH_ASSOC)) {
+        // Afficher les propriétés
+        echo "<section class='content-section'>";
+            echo "<div class='content-item'>";
+                echo "<i class='fa-solid fa-heart clickable' style='color: #1b5eaf;'></i>";
+                echo "<a href='pageBien.html'>";
+                    echo "<img src='../assets/img/bien1/img1.jpg' alt=''>";
+                    echo "<h3>{$property['nom_bien']}</h3>";
+                    echo "<div class='content'>";
+                    echo "<div class='text'>";
+                    echo "<p>{$property['vil_bien']}</p>";
+                    echo "</div>";
+                    echo "<div class='icon'>";
+                    echo "<i class='bx bx-bed'></i><span>{$property['nb_couchage']}</span>";
+                    echo "</div>";
+                    echo "</div>";
+                echo "</a>";
+            echo "</div>";
+        echo "</section>";
+    }   
+} else {
+    echo "<p>Aucun bien disponible.</p>";
+}
+?>
+
+    <!-- <section class="content-section">
         <div class="content-item">
-            <label for="img1" class="arrow left"><i class="fas fa-chevron-left"></i></label>
-            <label for="img2" class="arrow right"><i class="fas fa-chevron-right"></i></label>
             <i class="fa-solid fa-heart clickable" style="color: #1b5eaf;"></i>
             <a href="pageBien.html">
                 <img src="../assets/img/bien1/img1.jpg" alt="Image 1">
@@ -51,8 +81,6 @@
             </a>
         </div>
         <div class="content-item">
-            <label for="img1" class="arrow left"><i class="fas fa-chevron-left"></i></label>
-            <label for="img2" class="arrow right"><i class="fas fa-chevron-right"></i></label>
             <i class="fa-solid fa-heart clickable" style="color: #1b5eaf;"></i>
             <a href="pageBien.html">
                 <img src="../assets/img/bien2/img1.jpg" alt="Image 2">
@@ -61,8 +89,6 @@
             </a>
         </div>
         <div class="content-item">
-            <label for="img1" class="arrow left"><i class="fas fa-chevron-left"></i></label>
-            <label for="img2" class="arrow right"><i class="fas fa-chevron-right"></i></label>
             <i class="fa-solid fa-heart clickable" style="color: #1b5eaf;"></i>
             <a href="pageBien.html">
                 <img src="../assets/img/bien3/img1.jpeg" alt="Image 3">
@@ -71,8 +97,6 @@
             </a>
         </div>
         <div class="content-item">
-            <label for="img1" class="arrow left"><i class="fas fa-chevron-left"></i></label>
-            <label for="img2" class="arrow right"><i class="fas fa-chevron-right"></i></label>
             <i class="fa-solid fa-heart clickable" style="color: #1b5eaf;"></i>
             <a href="pageBien.html">
                 <img src="../assets/img/bien4/img1.jpg" alt="Image 4">
@@ -84,8 +108,6 @@
         
 
         <div class="content-item">
-            <label for="img1" class="arrow left"><i class="fas fa-chevron-left"></i></label>
-            <label for="img2" class="arrow right"><i class="fas fa-chevron-right"></i></label>
             <i class="fa-solid fa-heart clickable" style="color: #1b5eaf;"></i>
             <a href="pageBien.html">
                 <img src="../assets/img/bien5/img1.jpg" alt="Image 5">
@@ -94,8 +116,6 @@
             </a>
         </div>
         <div class="content-item">
-            <label for="img1" class="arrow left"><i class="fas fa-chevron-left"></i></label>
-            <label for="img2" class="arrow right"><i class="fas fa-chevron-right"></i></label>
             <i class="fa-solid fa-heart clickable" style="color: #1b5eaf;"></i>
             <a href="pageBien.html">
                 <img src="../assets/img/bien6/img1.jpg" alt="Image 6">
@@ -104,8 +124,6 @@
             </a>
         </div>
         <div class="content-item">
-            <label for="img1" class="arrow left"><i class="fas fa-chevron-left"></i></label>
-            <label for="img2" class="arrow right"><i class="fas fa-chevron-right"></i></label>
             <i class="fa-solid fa-heart clickable" style="color: #1b5eaf;"></i>
             <a href="pageBien.html">
                 <img src="../assets/img/bien7/img1.jpg" alt="Image 7">
@@ -114,8 +132,6 @@
             </a>
         </div>
         <div class="content-item">
-            <label for="img1" class="arrow left"><i class="fas fa-chevron-left"></i></label>
-            <label for="img2" class="arrow right"><i class="fas fa-chevron-right"></i></label>
             <i class="fa-solid fa-heart clickable" style="color: #1b5eaf;"></i>
             <a href="pageBien.html">
                 <img src="../assets/img/bien8/img1.jpg" alt="Image 8">
@@ -123,7 +139,7 @@
                 <p>Particulier <br> 10-15 Dec. <br> <span style="color: #1b5eaf;"><b>242 €</b></span> par nuit</p>
             </a>
         </div>
-    </section>
+    </section> -->
 
 </body>
 <footer style="background-color: #ddd0c8; padding-top: 40px;">

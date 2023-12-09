@@ -17,7 +17,7 @@ require_once("../class/tarif.class.php");
 </head>
 
 <body>
-    <?php include("../template/header.html"); ?>
+    <?php include("../template/header.php"); ?>
     <main>
         <section class="conteneur" id="tableau_tarif">
             <form action="../traitement/tarif.trait.php" method="post">
@@ -170,5 +170,83 @@ require_once("../class/tarif.class.php");
             border-radius: 4px;
         }
 
+        .bouton {
+        background: transparent;
+        position: absolute;
+        top: 25%;
+        left: 17%;
+        transform: translate(-50%, -50%);
+        padding: 5px 15px;
+        display: flex;
+        align-items: center;
+        font-size: 17px;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        border: 1px solid #1b5eaf;
+        border-radius: 25px;
+        outline: none;
+        overflow: hidden;
+        color: #323232;
+        transition: color 0.7s 0.4s ease-out;
+        text-align: center;
+    }
+
+    .bouton span {
+        margin: 10px;
+    }
+
+    .bouton > svg {
+        margin-right: 5px;
+        margin-left: 5px;
+        font-size: 20px;
+        transition: all 0.4s ease-in;
+    }
+
+    .bouton:hover > svg {
+        font-size: 1.2em;
+        transform: translateX(-5px);
+    }
+
+    .bouton::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        content: '';
+        border-radius: 50%;
+        display: block;
+        width: 20em;
+        height: 20em;
+        left: -5em;
+        text-align: center;
+        transition: box-shadow 0.5s ease-out;
+        z-index: -1;
+    }
+
+    .bouton:hover {
+        color: #f4f4f4;
+        border: 1px solid #1b5eaf;
+    }
+
+    .bouton:hover::before {
+        box-shadow: inset 0 0 0 10em #1b5eaf;
+    }
+
+    .bouton svg path {
+        fill: #323232;
+        transition: fill 0.4s ease-in-out;
+    }
+
+    .bouton:hover svg path {
+        fill: #fff;
+    }
+
+        .section-admin {
+            margin-left: 30px;
+            display: none;
+        }
     </style>
 </html>
