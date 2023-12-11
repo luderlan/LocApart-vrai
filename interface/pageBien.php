@@ -38,7 +38,7 @@
     <div class="wrapper">
       <i id="left" class="fa-solid fa-angle-left"></i>
         <div class="carousel">
-          <img src="../assets/img/bien1/img1.jpg" alt="img" draggable="false" class="first-photo">
+          <img src="../assets/img/bien1/img1.jpg" alt="img" draggable="false">
           <img src="../assets/img/bien2/img1.jpg" alt="img" draggable="false">
           <img src="../assets/img/bien3/img1.jpeg" alt="img" draggable="false">
           <img src="../assets/img/bien4/img1.jpg" alt="img" draggable="false">
@@ -50,7 +50,12 @@
         </div>
         <i id="right" class="fa-solid fa-angle-right"></i>
     </div>
+
+    <!-- Exécute le carrousel -->
     <script src="../assets/js/carrousel.js" defer></script>
+    <!-- Affiche chaques images lors du clique -->
+    <script src="../assets/js/afficher-images.js"></script>
+
     <hr class="hr">
       <div class="description-bien">
         <h2>Logement</h2>

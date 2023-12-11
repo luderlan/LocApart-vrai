@@ -28,7 +28,7 @@
             header("Location:../php/template/header.php");
             exit();
         } else {
-            echo "Login ou mot de passe incorrect";
+            echo "<script>alert('Login ou mot de passe incorrect');</script>";
         }
 
         $stmt->closeCursor();
@@ -36,6 +36,7 @@
 
     $conn = null;
 ?>
+
 
 
 <!DOCTYPE html>
