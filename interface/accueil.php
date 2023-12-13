@@ -40,36 +40,37 @@
     </section>  
 
 <?php
-    // Récupérer les propriétés de la base de données en excluant les biens supprimés
-    $query = "SELECT * FROM biens WHERE statut_bien = 1";
+    $query = "SELECT biens.*, tarif.prix_loc FROM biens
+    JOIN tarif ON biens.id_bien = tarif.id_bien
+    WHERE statut_bien = 1";
     $result = $con->query($query);
 
-// Vérifiez s'il y a des propriétés
 if ($result->rowCount() > 0) {
     while ($property = $result->fetch(PDO::FETCH_ASSOC)) {
-        // Afficher les propriétés
         echo "<section class='content-section'>";
-            echo "<div class='content-item'>";
-                echo "<i class='fa-solid fa-heart clickable' style='color: #1b5eaf;'></i>";
-                echo "<a href='pageBien.php'>";
-                    echo "<img src='../assets/img/bien1/img1.jpg' alt=''>";
-                    echo "<h3>{$property['nom_bien']}</h3>";
-                    echo "<div class='content'>";
-                    echo "<div class='text'>";
-                    echo "<p>{$property['vil_bien']}</p>";
-                    echo "</div>";
-                    echo "<div class='icon'>";
-                    echo "<i class='bx bx-bed'></i><span>{$property['nb_couchage']}</span>";
-                    echo "</div>";
-                    echo "</div>";
-                echo "</a>";
-            echo "</div>";
+        echo "<div class='content-item'>";
+        echo "<i class='fa-solid fa-heart clickable' style='color: #1b5eaf;'></i>";
+        echo "<a href='pageBien.php'>";
+        echo "<img src='../assets/img/bien1/img1.jpg' alt=''>";
+        echo "<h3>{$property['nom_bien']}</h3>";
+        echo "<div class='content'>";
+        echo "<div class='text'>";
+        echo "<p>{$property['vil_bien']}</p>";
+        echo "</div>";
+        echo "<div class='icon'>";
+        echo "<span>{$property['prix_loc']}</span><i class='fa-solid fa-euro-sign'></i>";
+        echo "<br>";
+        echo "<span>{$property['nb_couchage']}</span><i class='bx bx-bed'></i>";
+        echo "</div>";
+        echo "</div>";
+        echo "</a>";
+        echo "</div>";
         echo "</section>";
-    }   
+    }
 } else {
     echo "<p>Aucun bien disponible.</p>";
 }
-?>  
+?>
 </body>
 
 <footer style="background-color: #ddd0c8; padding-top: 40px;">

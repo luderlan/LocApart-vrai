@@ -21,7 +21,7 @@ require_once("../class/tarif.class.php");
 
 <body>
     <?php
-        $id_bien = $_GET['id'];
+        $id_bien = isset($_GET['id']) ? $_GET['id'] : null;
         $oBien = new bien($con);
         $stmt = $oBien->selectById($id_bien);
         $oBienDetails = $stmt->fetch(PDO::FETCH_ASSOC);
