@@ -12,5 +12,3 @@ require_once("class/class.contact.php");
     $oContact = new Contact($con);
     $oContact->insertContact($prenom,$nom,$email,$telephone,$message);
 ?>
-
-//dde
