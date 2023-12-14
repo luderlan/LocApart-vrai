@@ -63,7 +63,7 @@
                                     echo "<td><input type='text' name='nom_client[", $row['id_client'], "]' value='", $row['nom_client'], "'></td>";
                                     echo "<td><input type='text' name='prenom_client[", $row['id_client'], "]' value='", $row['prenom_client'], "'></td>";
                                     echo "<td><input type='text' name='rue_client[", $row['id_client'], "]' value='", $row['rue_client'], "'></td>";
-                                    echo "<td><input type='text' name='code_comm[", $row['id_client'], "]' value='", $row['code_comm'], "'></td>";
+                                    echo "<td><input type='text' name='id_comm[", $row['id_client'], "]' value='", $row['id_comm'], "'></td>";
                                     echo "<td><input type='text' name='mail_client[", $row['id_client'], "]' value='", $row['mail_client'], "'></td>";
                                     echo "<td><input type='text' name='pass_client[", $row['id_client'], "]' value='", $row['pass_client'], "'></td>";
                                     echo "<td><input type='text' name='statut_client[", $row['id_client'], "]' value='", $row['statut_client'], "'></td>";
@@ -89,7 +89,7 @@
                     <label for="vil_client" class="formulaire-label">Ville : </label>
                     <div class="input_container">
                         <input type="text" name="vil_client" id="vil_client" onkeyup="autocomplet()" class="formulaire-input">
-                        <input type="hidden" name="code_comm" id="code_comm" class="formulaire-input">
+                        <input type="hidden" name="id_comm" id="id_comm" class="formulaire-input">
                         <ul id="id_list_ville"></ul>
                     </div>
                     <label for="mail_client" class="formulaire-label">Mail client : </label>
