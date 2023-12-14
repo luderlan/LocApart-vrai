@@ -1,5 +1,5 @@
 <?php
-require_once("../class/type_bien.class.php");    
+require_once("../class/type_bien.php");    
 
 class bien
 {

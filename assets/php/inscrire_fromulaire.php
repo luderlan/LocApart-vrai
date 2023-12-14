@@ -15,4 +15,5 @@ require_once("class/class.client.php");
 
     $oNouveauClient->insertClientInsc($nvNomClient,$nvPrenomClient,$nvRueClient,$nvCodeComm,$nvMailClient,$nvPassClient);
 
+    header("location:../../interface/connecter.php");
 ?>  
