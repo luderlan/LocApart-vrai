@@ -1,32 +1,17 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"]) && $_POST["action"] == "create_client") {
-    $nom = $_POST["nom"];
-    $prenom = $_POST["prenom"];
-    $rue = $_POST["rue"];
-    $cp = $_POST["cp"];
-    $ville = $_POST["ville"];
-    $mail = $_POST["mail"];
-    $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
 
-    $serveur = "localhost";
-    $utilisateur = "root";
-    $mot_de_passe = "";
-    $nom_base_de_données = "locapart";
+require_once("include/connexion.inc.php");
+require_once("class/class.client.php");
 
-    $connexion = new mysqli($serveur, $utilisateur, $mot_de_passe, $nom_base_de_données);
+    $nvNomClient = $_POST['nom_client'];
+    $nvPrenomClient = $_POST['prenom_client'];
+    $nvRueClient = $_POST['rue_client'];
+    $nvCodeComm = $_POST['id_comm'];
+    $nvMailClient = $_POST['mail_client'];
+    $nvPassClient = password_hash($_POST['pass_client'], PASSWORD_DEFAULT);
 
-    if ($connexion->connect_error) {
-        die("Échec de la connexion : " . $connexion->connect_error);
-    }
+    $oNouveauClient = new Client($con);
 
-    $sql = "INSERT INTO inscrire (nom, prenom, rue, cp, ville, mail, mdp) VALUES ('$nom', '$prenom', '$rue', '$cp', '$ville', '$mail', '$mdp')";
+    $oNouveauClient->insertClient($nvNomClient,$nvPrenomClient,$nvRueClient,$nvCodeComm,$nvMailClient,$nvPassClient);
 
-    if ($connexion->query($sql) === TRUE) {
-        echo "Vous êtes inscrit ! Vous pouvez retourner sur le site pour vous connecter";
-    } else {
-        echo "Erreur : " . $sql . "<br>" . $connexion->error;
-    }
-
-    $connexion->close();
-}
 ?>  

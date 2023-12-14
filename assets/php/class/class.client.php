@@ -9,7 +9,7 @@ class Client
     private $nom_client;
     private $prenom_client;
     private $rue_client;
-    private $code_comm;
+    private $id_comm;
     private $mail_client;
     private $pass_client;
     private $statut_client;
@@ -44,7 +44,7 @@ class Client
 
     public function getCodeComm()
     {
-        return $this->code_comm;
+        return $this->id_comm;
     }
 
     public function getMailClient()
@@ -85,7 +85,7 @@ class Client
 
     public function SetCodeComm($l)
     {
-        $this->code_comm = $l;
+        $this->id_comm = $l;
     }
 
     public function setMailClient($l)
@@ -111,7 +111,7 @@ class Client
         return $stmt;
     }
 
-    public function insertClient($nom,$prenom,$rue,$code,$mail,$pass,$statut,$valid)
+    public function insertClient($nom,$prenom,$rue,$code,$mail,$pass)
     {
         $data = [
             ":nom" => $nom,
@@ -119,14 +119,12 @@ class Client
             ":rue" => $rue,
             ":cod" => $code,
             ":mail" => $mail,
-            ":mdp" => $pass,
-            ":statut" => $statut,
-            ":valide" => $valid
+            ":mdp" => $pass
         ];
 
         $sql = "INSERT INTO clients (nom_client, prenom_client, rue_client,
-        code_comm, mail_client, pass_client, statut_client, valid_client)
-        VALUES (:nom, :prenom, :rue, :cod, :mail, :mdp, :statut, :valide)";
+        id_comm, mail_client, pass_client)
+        VALUES (:nom, :prenom, :rue, :cod, :mail, :mdp)";
 
 
         $stmt = $this->con->prepare($sql);
@@ -148,7 +146,7 @@ class Client
             ":valide" => $valid
         ];
 
-        $sql = "UPDATE clients SET nom_client = :nom, prenom_client = :prenom, rue_client = :rue, code_comm = :cod,
+        $sql = "UPDATE clients SET nom_client = :nom, prenom_client = :prenom, rue_client = :rue, id_comm = :cod,
         mail_client = :mail, pass_client = :mdp, statut_client = :statut, valid_client = :valide
         WHERE id_client = :idc";
 
@@ -170,7 +168,7 @@ class Client
     {
         $data = [":idc" => $id];
 
-        $sql = "SELECT nom_client,prenom_client,rue_client, code_comm,mail_client,pass_client,statut_client,valid_client
+        $sql = "SELECT nom_client,prenom_client,rue_client, id_comm,mail_client,pass_client,statut_client,valid_client
         FROM clients 
         WHERE id_client = :idc";
         
