@@ -111,7 +111,7 @@ class Client
         return $stmt;
     }
 
-    public function insertClient($nom,$prenom,$rue,$code,$mail,$pass)
+    public function insertClient($nom,$prenom,$rue,$code,$mail,$pass,$statut,$valid)
     {
         $data = [
             ":nom" => $nom,
@@ -119,7 +119,29 @@ class Client
             ":rue" => $rue,
             ":cod" => $code,
             ":mail" => $mail,
-            ":mdp" => $pass
+            ":mdp" => $pass,
+            ":statut" => $statut,
+            ":valide" => $valid
+        ];
+
+        $sql = "INSERT INTO clients (nom_client, prenom_client, rue_client,
+        id_comm, mail_client, pass_client, statut_client, valid_client)
+        VALUES (:nom, :prenom, :rue, :cod, :mail, :mdp, :statut, :valide)";
+
+
+        $stmt = $this->con->prepare($sql);
+        $stmt->execute($data);
+    }
+
+    public function insertClientInsc($nom,$prenom,$rue,$code,$mail,$pass)
+    {
+        $data = [
+            ":nom" => $nom,
+            ":prenom" => $prenom,
+            ":rue" => $rue,
+            ":cod" => $code,
+            ":mail" => $mail,
+            ":mdp" => $pass,
         ];
 
         $sql = "INSERT INTO clients (nom_client, prenom_client, rue_client,
