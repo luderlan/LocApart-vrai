@@ -4,7 +4,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"]) && $_POST["a
     $prenom = $_POST["prenom"];
     $rue = $_POST["rue"];
     $cp = $_POST["cp"];
-    $ville = $_POST["ville"];
     $mail = $_POST["mail"];
     $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
 
@@ -19,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["action"]) && $_POST["a
         die("Échec de la connexion : " . $connexion->connect_error);
     }
 
-    $sql = "INSERT INTO inscrire (nom, prenom, rue, cp, ville, mail, mdp) VALUES ('$nom', '$prenom', '$rue', '$cp', '$ville', '$mail', '$mdp')";
+    $sql = "INSERT INTO inscrire (nom, prenom, rue, cp, mail, mdp) VALUES ('$nom', '$prenom', '$rue', '$cp', '$mail', '$mdp')";
 
     if ($connexion->query($sql) === TRUE) {
         echo "Vous êtes inscrit ! Vous pouvez retourner sur le site pour vous connecter";
