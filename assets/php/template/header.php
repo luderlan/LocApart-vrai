@@ -12,14 +12,14 @@
         <img class="logo" src="../../../logo-site/logo-finis.png" alt="">
 
         <ul class="navbar">
-            <li><a href="../../../../interface/accueil.php"><i class="fa-solid fa-house" style="color: #1b5eaf;"></i> Accueil</a></li>
-            <li><a href="../../../../interface/biens.php"><i class="fa-solid fa-thumbtack" style="color: #1b5eaf;"></i> Nos biens</a></li>
-            <li><a href="../../../../interface/contact.html"><i class="fa-solid fa-address-book" style="color: #1b5eaf;" ></i> Contact</a></li>
+            <li><a href="../../../interface/accueil.php"><i class="fa-solid fa-house" style="color: #1b5eaf;"></i> Accueil</a></li>
+            <li><a href="../../../interface/biens.php"><i class="fa-solid fa-thumbtack" style="color: #1b5eaf;"></i> Nos biens</a></li>
+            <li><a href="../../../interface/contact.html"><i class="fa-solid fa-address-book" style="color: #1b5eaf;" ></i> Contact</a></li>
         </ul>
 
         <div class="navbar">
-            <a href="../../../../interface/connecter.php" class="user"><i class="fa-regular fa-user" style="color: #1b5eaf;"></i> Se Connecter</a>
-            <a href="../../../../interface/inscrire.html"><i class="fa-regular fa-address-card" style="color: #1b5eaf;"></i> S'inscrire</a>
+            <a href="../../../interface/connecter.php" class="user"><i class="fa-regular fa-user" style="color: #1b5eaf;"></i> Se Connecter</a>
+            <a href="../../../interface/inscrire.html"><i class="fa-regular fa-address-card" style="color: #1b5eaf;"></i> S'inscrire</a>
             <div class="bx bx-menu" id="menu-icon"></div>
         </div>
     </header>
