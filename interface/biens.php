@@ -115,25 +115,13 @@ if ($result->rowCount() > 0) {
 } else {
     echo "<p>Aucun bien disponible.</p>";
 }
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     if (isset($_POST['id_bien']) && is_numeric($_POST['id_bien'])) {
-//         $id_bien = $_POST['id_bien'];
-
-//         // Mettez à jour le statut des favoris dans la base de données
-//         $query = "UPDATE biens SET favoris = NOT favoris WHERE id_bien = :id_bien";
-//         $stmt = $con->prepare($query);
-//         $stmt->bindParam(':id_bien', $id_bien, PDO::PARAM_INT);
-//         $stmt->execute();
-//     }
-// }
-// ?> 
+?> 
 
     <hr>   
     <section class="favoris-section">
         <h2 class="favoris-titre">Biens favoris :</h2>
         <br>
     </section>
-    <script src="../assets/js/script.js"></script>
     
     <script>
         function afficherInterfaceRecherche() {
