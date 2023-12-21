@@ -8,7 +8,7 @@ function autocompletBien() {
 			type: 'POST',
 			data: {keyword:keyword},
 			success:function(data){
-				$('#type_list_id').show();
+				$('#type_li	st_id').show();
 				$('#type_list_id').html(data);
 			}
 		});

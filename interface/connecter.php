@@ -19,7 +19,6 @@
         <img class="logo" src="../logo-site/logo-finis.png" alt="">
 
         <ul class="navbar">
-            <li style="display: none;"><a href="../assets/php/template/header.php"><i class="fa-solid fa-lock" style="color: #1b5eaf;"></i> Admin</a></li>
             <li><a href="accueil.php"><i class="fa-solid fa-house" style="color: #1b5eaf;"></i> Accueil</a></li>
             <li><a href="biens.php"><i class="fa-solid fa-thumbtack" style="color: #1b5eaf;"></i> Nos biens</a></li>
             <li><a href="contact.html"><i class="fa-solid fa-address-book" style="color: #1b5eaf;" ></i> Contact</a></li>

@@ -1,8 +1,6 @@
 <?php
-
 class Client
 {
-
     //variables
     private $con;
     private $id_client;
@@ -67,6 +65,7 @@ class Client
         return $this->valid_client;
     }
 
+
     //setters
     public function setNomClient($l)
     {
@@ -126,8 +125,8 @@ class Client
 
         $sql = "INSERT INTO clients (nom_client, prenom_client, rue_client,
         id_comm, mail_client, pass_client, statut_client, valid_client)
-        VALUES (:nom, :prenom, :rue, :cod, :mail, :mdp, :statut, :valide)";
 
+        VALUES (:nom, :prenom, :rue, :cod, :mail, :mdp, :statut, :valide)";
 
         $stmt = $this->con->prepare($sql);
         $stmt->execute($data);
@@ -146,8 +145,8 @@ class Client
 
         $sql = "INSERT INTO clients (nom_client, prenom_client, rue_client,
         id_comm, mail_client, pass_client)
-        VALUES (:nom, :prenom, :rue, :cod, :mail, :mdp)";
 
+        VALUES (:nom, :prenom, :rue, :cod, :mail, :mdp)";
 
         $stmt = $this->con->prepare($sql);
         $stmt->execute($data);
@@ -155,7 +154,6 @@ class Client
 
     public function updateClient($id, $nom,$prenom,$rue,$code,$mail,$pass,$statut,$valid)
     {
-
         $data = [
             ":idc" => $id,
             ":nom" => $nom,
@@ -199,5 +197,4 @@ class Client
         return $stmt;
     }
 }
-
 ?>

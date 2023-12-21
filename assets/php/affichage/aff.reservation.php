@@ -17,71 +17,47 @@ $datetime_string = date('c', time());
 <html lang="fr">
     
 <head>
-  
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+</head>
 
-    <style type="text/css">
-      img {border-width: 0}
-      * {font-family:'Lucida Grande', sans-serif;}
-    </style>
-
-  </head>
-
-
-
-
-
-  <body>
-  
-    <style type="text/css">
-        .block a:hover{
-            color: silver;
-        }
-        .block a{
-            color: #fff;
-        }
-        .block {
-            position: fixed;
-            background: #2184cd;
-            padding: 20px;
-            z-index: 1;
-            top: 240px;
-        }
-    </style>
-
+<body>
     <h1 class="titre">Calendrier des réservations</h1>
-  
-<div>
-    <div style="margin-top:8px">
+    <button class="bouton" onclick="redirectToHeader()">
+        <svg height="18" width="18" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024">
+            <path d="M874.690416 495.52477c0 11.2973-9.168824 20.466124-20.466124 20.466124l-604.773963 0 188.083679 188.083679c7.992021 7.992021 7.992021 20.947078 0 28.939099-4.001127 3.990894-9.240455 5.996574-14.46955 5.996574-5.239328 0-10.478655-1.995447-14.479783-5.996574l-223.00912-223.00912c-3.837398-3.837398-5.996574-9.046027-5.996574-14.46955 0-5.433756 2.159176-10.632151 5.996574-14.46955l223.019353-223.029586c7.992021-7.992021 20.957311-7.992021 28.949332 0 7.992021 8.002254 7.992021 20.957311 0 28.949332l-188.073446 188.073446 604.753497 0C865.521592 475.058646 874.690416 484.217237 874.690416 495.52477z" fill="#323232"></path>
+        </svg>
+        <span>Retour</span>
+    </button>
+    <script>
+        function redirectToHeader() {
+            window.location.href = "../template/header.php";
+        }
+    </script>
+    <br><br><br>
+    <div>
+        <div style="margin-top:8px">
 
-</div>
-    <div style="float:left;width:90px">
-</div>
+    </div>
+        <div style="float:left;width:90px">
+    </div>
+    <div style="float:left;width:120px;margin-left:20px;margin-top:2px"></div>
+    <div style="text-align: center;"></div>
+    <br><br>  
 
-<div style="float:left;width:120px;margin-left:20px;margin-top:2px"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/fullc/script.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <link  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" >
+    <link href="../../css/style.fullc/fullcalendar.css" rel="stylesheet" />
+    <link href="../../css/style.fullc/fullcalendar.print.css" rel="stylesheet" media="print" />
+    <script src="../../js/fullc/moment.min.js"></script>
+    <script src="../../js/fullc/fullcalendar.js"></script>
 
-      
-<div style="text-align: center;"></div>
-
-<br><br>  
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script type="text/javascript" src="../../js/fullc/script.js"></script>
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
-<link  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" >
-
-<link href="../../css/style.fullc/fullcalendar.css" rel="stylesheet" />
-<link href="../../css/style.fullc/fullcalendar.print.css" rel="stylesheet" media="print" />
-<script src="../../js/fullc/moment.min.js"></script>
-<script src="../../js/fullc/fullcalendar.js"></script>
-
-<div class="container">
-  <div class="row">
-<div id="calendar"></div>
-
-</div>
-</div>
+    <div class="container">
+        <div class="row">
+            <div id="calendar"></div>
+        </div>
+    </div>
 
 
 <!-- Modal -->

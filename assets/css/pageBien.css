@@ -51,8 +51,10 @@ footer {
 }
 
 .hr {
-    margin: 20px 0; 
-    border-color: #ddd0c87f;
+    margin: 20px auto; 
+    border-color: #1b5eaf;
+    display: block;
+    width: 950px;
 }
 
 .bas-page {
@@ -409,3 +411,40 @@ footer {
     z-index: 1001;
   }
   
+    .hr-2 {
+        margin-top: 20px;
+        border-color: #ddd0c8; /* Couleur de la bordure */
+    }
+
+    .description-bien {
+        margin: 20px 0;
+        padding: 30px;
+        border: 2px solid #1b5eaf; /* Couleur de la bordure */
+        border-radius: 18px;
+    }
+
+    .description-bien h2 {
+        font-size: 24px;
+        color: #1b5eaf; /* Couleur du texte */
+    }
+
+    .description-bien p {
+        margin: 10px 0;
+        font-size: 16px;
+    }
+
+    .description-bien p:first-child {
+        margin-top: 0;
+    }
+
+    .description-bien p:last-child {
+        margin-bottom: 0;
+    }
+
+    .description-bien p span {
+        font-weight: bold;
+    }
+
+    .espace-section {
+      margin-left: 25px;
+    }

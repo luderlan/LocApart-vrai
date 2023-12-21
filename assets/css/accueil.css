@@ -353,7 +353,7 @@ i {
     text-align: center;
     bottom: 0; 
     width: 100%; 
-    background-color: rgba(0, 0, 0, 0.025);
+    background-color: #f9f9f9;
     padding: 10px; 
 }
 
@@ -364,6 +364,15 @@ footer {
     padding-top: 40px;
     box-sizing: border-box;
 }
+
+.section-footer {
+    display: flex; 
+    justify-content: space-around;
+  }
+  
+  .footer-content {
+    text-align: center;
+  }
 
 .favoris-section {
     background-color: #eeeeee;
@@ -401,4 +410,9 @@ footer {
 
 .une-section{
     background-color: #eeeeee;
+}
+
+.hr {
+    margin: 20px 0; 
+    border-color: #ddd0c87f;
 }

@@ -353,7 +353,7 @@ i {
     text-align: center;
     bottom: 0; 
     width: 100%; 
-    background-color: rgba(0, 0, 0, 0.025);
+    background-color: #f9f9f9;
     padding: 10px; 
 }
 
@@ -363,6 +363,15 @@ footer {
     background-color: #ddd0c8;
     padding-top: 40px;
     box-sizing: border-box;
+}
+
+.section-footer {
+    display: flex; 
+    justify-content: space-around;
+}
+
+.footer-content {
+    text-align: center;
 }
 
 .favoris-section {
@@ -403,6 +412,11 @@ footer {
     bottom: 0px;
 }
 
+.hr {
+    margin: 20px 0; 
+    border-color: #ddd0c87f;
+}
+
 button{
     font-family: monospace;
     background-color: #f3f7fe;
@@ -414,7 +428,7 @@ button{
     transition: .3s;
 }
 
-button{
+button:hover{
     background-color: #3b82f6;
     box-shadow: 0 0 0 5px #3b83f65f;
     color: #fff;

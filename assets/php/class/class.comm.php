@@ -1,15 +1,11 @@
 <?php
-
 class Communes
 {
-
     //variables
     private $con;
     private $COL1;
     private $COL3;
     private $COL10;
-    private $COL13;
-
 
 
     //constructeur
@@ -18,25 +14,19 @@ class Communes
         $this->con = $c;
     }
 
+
     //getters
     public function getIdCommune()
     {
         return $this->COL1;
     }
-
     public function getCp()
     {
         return $this->COL3;
     }
-
     public function getNomCommune()
     {
         return $this->COL10;
-    }
-
-    public function getDepartement()
-    {
-        return $this->COL13;
     }
 
     
@@ -45,16 +35,11 @@ class Communes
     {
         $this->COL3 = $l;
     }
-
     public function setNomCommune($l)
     {
         $this->COL10 = $l;
     }
 
-    public function setDepartement($l)
-    {
-        $this->COL13 = $l;
-    }
 
     //Fonctions
     public function getCommById($id)
@@ -78,5 +63,4 @@ class Communes
     }
 
 }
-
 ?>

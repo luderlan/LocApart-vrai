@@ -1,9 +1,6 @@
 <?php
-
 class Reservation
 {
-
-    //variables
     private $con;
     private $id_reservation;
     private $titre;
@@ -29,47 +26,38 @@ class Reservation
     {
         return $this->id_reservation;
     }
-
     public function getTitre()
     {
         return $this->titre;
     }
-
     public function getDateRese()
     {
         return $this->date_rese;
     }
-
     public function getDadRese()
     {
         return $this->start;
     }
-
     public function getDafRese()
     {
         return $this->end;
     }
-
     public function getComm()
     {
         return $this->commentaire;
     }
-
     public function getMod()
     {
         return $this->moderation;
     }
-
     public function getAnnulation()
     {
         return $this->annulation;
     }
-
     public function getIdBien()
     {
         return $this->id_bien;
     }
-
     public function getIdClient()
     {
         return $this->id_client;
@@ -81,42 +69,34 @@ class Reservation
     {
         $this->titre = $l;
     }
-
     public function setDateRese($l)
     {
         $this->date_rese = $l;
     }
-
     public function setDadRese($l)
     {
         $this->start = $l;
     }
-
     public function setDafRese($l)
     {
         $this->end = $l;
     }
-
     public function setComm($l)
     {
         $this->commentaire = $l;
     }
-
     public function setModeration($l)
     {
         $this->moderation = $l;
     }
-
     public function setAnnulation($l)
     {
         $this->annulation = $l;
     }
-
     public function setIdBien($l)
     {
         $this->id_bien = $l;
     }
-
     public function setIdClient($l)
     {
         $this->id_client = $l;
@@ -150,14 +130,11 @@ class Reservation
 
 
         $sql = "INSERT INTO reservation (titre,date_rese,start,end,commentaire,moderation,annulation,id_bien,id_client)
-
         VALUES (:titre,:dateRes,:start,:end,:comm,:mod,:ann,:idb,:idc)";
 
 
         $stmt = $this->con->prepare($sql);
         $stmt->execute($data);
-
-
     }
 
     public function updateRes($id,$titre,$date,$s,$e,$comm,$mod,$ann,$idb,$idc)
@@ -216,5 +193,4 @@ class Reservation
         return $executesql;
     }
 }
-
 ?>

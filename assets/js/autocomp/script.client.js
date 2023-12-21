@@ -1,4 +1,3 @@
-// autocompletion
 function autocomplet() {
 	var min_length = 1; // nombre de caractère avant lancement recherch 
 	var keyword = $('#vil_client').val();  // nom_id fait référence au champ de recherche puis lancement de la recherche grace ajax_refresh

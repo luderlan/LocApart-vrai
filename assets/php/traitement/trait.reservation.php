@@ -4,6 +4,7 @@ require_once("../class/class.reservation.php");
 
 $oReservation = new Reservation($con);
 
+$action = isset($_POST['ajoutCli']) ? 'ajout' : (isset($_POST['updateCli']) ? 'update' : (isset($_GET['action']) && $_GET['action'] == 'deleteCli' ? 'delete' : ''));
 
 
 if (isset($_POST['deleteRes'])) {

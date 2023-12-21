@@ -1,8 +1,5 @@
 <?php
 
-
- // puis création de votre requete  dans l'exemple ci dessous on sélectionne les biens d'une BDD
- 
 	include '../include/connexion.inc.php';
 
 
@@ -19,6 +16,8 @@ foreach ($list as $res) {
 	$ListeTypebien = str_replace($_POST['keyword'], '<b>'.$_POST['keyword'].'</b>', $res['lib_type_bien'].' '.$res['id_type_bien']);
 	// sélection 
     echo '<li onclick="set_item(\''.str_replace("'", "\'", $res['lib_type_bien'].' '.$res['id_type_bien']).'\',\''.str_replace("'", "\'",$res['id_type_bien']).'\')">'.$ListeTypebien.'</li>';
+    // echo '<li onclick="set_item(\''.str_replace("'", "\'", $res['lib_type_bien'].' '.$res['id_type_bien']).'\')">'.$ListeTypebien.'</li>';
+
 }
 ?>
 

@@ -1,5 +1,18 @@
 <?php
-    require_once("../assets/php/include/connexion.inc.php");
+  require_once("../assets/php/include/connexion.inc.php");
+
+  // Vérifie si l'ID du bien est présent dans la variable GET
+  if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+      $id_bien = $_GET['id'];
+
+      // Requête pour récupérer les détails du bien
+      $query = "SELECT * FROM biens WHERE id_bien = :id_bien";
+      $stmt = $con->prepare($query);
+      $stmt->bindParam(':id_bien', $id_bien, PDO::PARAM_INT);
+      $stmt->execute();
+
+      if ($stmt->rowCount() > 0) {
+          $property = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +34,6 @@
       <img class="logo" src="../logo-site/logo-finis.png" alt="">
 
       <ul class="navbar">
-        <li style="display: none;"><a href="../assets/php/template/header.php"><i class="fa-solid fa-lock" style="color: #1b5eaf;"></i> Admin</a></li>
           <li><a href="accueil.php"><i class="fa-solid fa-house" style="color: #1b5eaf;"></i> Accueil</a></li>
           <li><a href="biens.php"><i class="fa-solid fa-thumbtack" style="color: #1b5eaf;"></i> Nos biens</a></li>
           <li><a href="contact.html"><i class="fa-solid fa-address-book" style="color: #1b5eaf;" ></i> Contact</a></li>
@@ -57,10 +69,24 @@
     <script src="../assets/js/afficher-images.js"></script>
 
     <hr class="hr">
-      <div class="description-bien">
-        <h2>Logement</h2>
-      </div>
+    <div class="description-bien">
+        <h2><i class="fa-solid fa-house" style="color: #1b5eaf;"></i> Logement :&nbsp<?php echo $property['nom_bien']; ?></h2>
+        <p>Notre bien&nbsp<?php echo $property['nom_bien']; ?>&nbspce situe à&nbsp<?php echo $property['vil_bien']; ?>&nbsp<?php echo $property['codeP_bien']; ?>&nbspà l'adresse suivante :&nbsp<?php echo $property['rue_bien']; ?></p>
+        <p>Détails du bien : <br><div class="espace-section">Superficie : <?php echo $property['sup_bien']; ?>m² ○&nbspNombre de couchages : <?php echo $property['nb_couchage']; ?> ○&nbspNombre de pièces : <?php echo $property['nb_piece']; ?> ○&nbspNombre de chambres : <?php echo $property['nb_chambre']; ?></p></div>
+        <p>Descriptif du bien : <br> 
+        <div class="espace-section"><?php echo $property['descriptif']; ?></p></div>
+    </div>
 </body>
+</html>
+
+<?php
+  } else {
+    echo "<p>Le bien avec l'ID $id_bien n'a pas été trouvé.</p>";
+  }
+  } else {
+    echo "<p>Aucun ID de bien n'a été fourni.</p>";
+  }
+?>
 
 <footer>
     <div class="card">
@@ -81,7 +107,7 @@
         </a>
     </div>      
 
-    <hr class="hr">
+    <hr class="hr-2">
 
     <div class="bas-page">
         <div class="section-bas-page">

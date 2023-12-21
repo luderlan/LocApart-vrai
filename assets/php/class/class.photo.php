@@ -1,9 +1,6 @@
 <?php
-
 class Photo
 {
-
-    //variables
     private $con;
     private $id_photo;
     private $nom_photo;
@@ -16,26 +13,24 @@ class Photo
         $this->con = $c;
     }
 
+
     //getters
     public function getIdPhoto()
     {
         return $this->id_photo;
     }
-
     public function getNomPhoto()
     {
         return $this->nom_photo;
     }
-
     public function getLienPhoto()
     {
         return $this->lien_photo;
     }
-
-    // public function getPrenomClient()
-    // {
-    //     return $this->prenom_client;
-    // }
+    public function getIdBien()
+    {
+        return $this->id_bien;
+    }
 
 
     //setters
@@ -43,16 +38,14 @@ class Photo
     {
         $this->nom_photo = $l;
     }
-
     public function setLienPhoto($l)
     {
         $this->lien_photo = $l;
     }
-
-    // public function setPrenomClient($l)
-    // {
-    //     $this->prenom_client = $l;
-    // }
+    public function setIdbien($l)
+    {
+        $this->id_bien = $l;
+    }
 
 
     //fonctions
@@ -81,7 +74,6 @@ class Photo
 
     public function updatePhoto($id, $nom,$lien,$bien)
     {
-
         $data = [
             ":idp" => $id,
             ":nom" => $nom,
@@ -125,5 +117,4 @@ class Photo
         return $executesql;
     }
 }
-
 ?>    
