@@ -18,7 +18,7 @@ switch ($action) {
 
     case 'update':
         if (isset($_POST['updateTB'])) {
-            $id_type_bien = $_POST['update'];
+            $id_type_bien = $_POST['updateTB'];
             $lib_type_bien = $_POST['lib_type_bien'][$id_type_bien];
 
             $oTypeBien->updateTypeBien($id_type_bien, $lib_type_bien);
@@ -28,7 +28,7 @@ switch ($action) {
         break;
 
     case 'delete':
-        $id_type_bien = $_POST['delete'];
+        $id_type_bien = $_POST['deleteTB'];
         $oTypeBien->deleteTypeBien($id_type_bien);
 
         header("location:../affichage/aff.type_bien.php");
