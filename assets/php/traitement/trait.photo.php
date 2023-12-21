@@ -5,7 +5,7 @@ require_once("../class/class.photo.php");
 
 $oPhoto = new Photo($con);
 
-$action = isset($_POST['ajoutPho']) ? 'ajout' : (isset($_POST['updatePho']) ? 'update' : (isset($_GET['action']) && $_GET['action'] == 'deletePho' ? 'delete' : ''));
+$action = isset($_POST['ajoutPho']) ? 'ajout' : (isset($_POST['updatePho']) ? 'update' : (isset($_POST['deletePho']) ? 'delete' : ''));
 
 switch ($action) {
     case 'ajout':

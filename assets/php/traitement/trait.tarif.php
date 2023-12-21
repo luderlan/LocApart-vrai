@@ -4,7 +4,7 @@ require_once("../class/class.tarif.php");
 
 $oTarif = new tarif($con);
 
-$action = isset($_POST['ajoutTarif']) ? 'ajout' : (isset($_POST['updateTarif']) ? 'update' : (isset($_GET['action']) && $_GET['action'] == 'deleteTarif' ? 'sup' : ''));
+$action = isset($_POST['ajoutTarif']) ? 'ajout' : (isset($_POST['updateTarif']) ? 'update' : (isset($_POST['deleteTarif']) ? 'delete' : ''));
 
 switch ($action) {
   

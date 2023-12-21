@@ -4,7 +4,7 @@ require_once("../class/class.bien.php");
 
 $oBiens = new bien($con);
 
-$action = isset($_POST['ajout']) ? 'ajout' : (isset($_POST['update']) ? 'update' : (isset($_GET['action']) && $_GET['action'] == 'sup' ? 'sup' : ''));
+$action = isset($_POST['ajout']) ? 'ajout' : (isset($_POST['update']) ? 'update' : (isset($_POST['delete']) ? 'delete' : ''));
 
 switch ($action) {
   case 'ajout':
