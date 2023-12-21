@@ -94,7 +94,7 @@ if ($result->rowCount() > 0) {
     while ($property = $result->fetch(PDO::FETCH_ASSOC)) {
         echo "<section class='content-section'>";
         echo "<div class='content-item'>";
-        echo "<i class='fa-solid fa-heart clickable' style='color: #1b5eaf;'></i>";
+        echo "<i class='fa-solid fa-heart clickable' style='color: #1b5eaf;' onclick='ajouterFavoris({$property['id_bien']})'></i>";
         echo "<a href='pageBien.php?id={$property['id_bien']}'>";
         echo "<img src='../assets/img/bien1/img1.jpg' alt=''>";
         echo "<h3>{$property['nom_bien']}</h3>";
@@ -123,6 +123,22 @@ if ($result->rowCount() > 0) {
         <br>
     </section>
     
+    <script>
+        function ajouterFavoris(idBien) {
+        // Faites une requête Ajax pour mettre à jour la base de données
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Mettez à jour l'interface client si nécessaire
+                // Vous pouvez ajouter ici une logique pour mettre à jour l'icône du cœur
+                console.log("Bien ajouté aux favoris !");
+            }
+        };
+        xhr.open("GET", "ajouter_favoris.php?id=" + idBien, true);
+        xhr.send();
+        }
+    </script>
+
     <script>
         function afficherInterfaceRecherche() {
             var interfaceRecherche = document.getElementById("interface-recherche");
