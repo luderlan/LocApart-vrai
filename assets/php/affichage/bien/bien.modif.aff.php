@@ -14,7 +14,7 @@
     <script type="text/javascript" src="../../../js/autocomp/jquery.min.js"></script>
     <script type="text/javascript" src="../../../js/autocomp/script.bien.js"></script>
     <script type="text/javascript" src="../../../js/autocomp/script.tarif.js"></script>
-    <link rel="stylesheet" href="../../../css/style.bien.modif.css">
+    <link rel="stylesheet" href="../../../css/bien.css">
 </head>
 
 <body>

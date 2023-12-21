@@ -47,6 +47,7 @@
                                 <th>Reference</th>
                                 <th>Statut</th>
                                 <th>Type bien</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody class="tableau_corps">
