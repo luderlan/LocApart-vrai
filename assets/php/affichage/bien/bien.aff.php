@@ -12,7 +12,7 @@
         <title>Biens - Loc'Appart</title>
         <script type="text/javascript" src="../../../js/autocomp/jquery.min.js"></script>
         <script type="text/javascript" src="../../../js/autocomp/script.bien.js"></script>
-        <link rel="stylesheet" href="../../../css/bien.css">
+        <link rel="stylesheet" href="../../../css/style.bien.css">
     </head>
 
     <body>
@@ -99,7 +99,7 @@
                             ?>
                         </tbody>
                     </table>
-                <a href="bien.ajout.aff.php"><button class = "bouton-primaire">Ajouter</button></a>
+                <a href="bien.ajout.aff.php"><button class = "bouton-primaire">Ajouter un bien</button></a>
             </section>
         </main>
     </body>

@@ -29,6 +29,7 @@ th, td {
 th {
     background-color: #323232;
     color: white;
+    text-align: center;
 }
 
 input[type="text"] {
