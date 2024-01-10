@@ -12,7 +12,7 @@
     <title>Biens - Loc'Appart</title>
     <script type="text/javascript" src="../../../js/autocomp/jquery.min.js"></script>
         <script type="text/javascript" src="../../../js/autocomp/script.bien.js"></script>
-    <script type="text/javascript" src="../../js/autocomp/script.bien.aj.ville.js"></script>
+    <script type="text/javascript" src="../../../js/autocomp/script.bien.aj.ville.js"></script>
     <link rel="stylesheet" href="../../../css/style.bien.css">
 </head>
 
