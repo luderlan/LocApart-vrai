@@ -1,6 +1,6 @@
 <?php
-        require_once("../../include/connexion.inc.php");
-        require_once("../../class/class.bien.php");
+        require_once("../include/connexion.inc.php");
+        require_once("../class/class.bien.php");
 ?>
 
 <!DOCTYPE html>
@@ -10,15 +10,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biens - Loc'Appart</title>
-    <script type="text/javascript" src="../../../js/autocomp/jquery.min.js"></script>
-    <script type="text/javascript" src="../../../js/autocomp/script.bien.js"></script>
-    <script type="text/javascript" src="../../../js/autocomp/script.bien.aj.ville.js"></script>
-    <link rel="stylesheet" href="../../../css/style.bien.css">
+    <script type="text/javascript" src="../../js/autocomp/jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/autocomp/script.bien.js"></script>
+    <link rel="stylesheet" href="../../css/style.bien.css">
 </head>
 
 <body>
 
-    <?php include("../../template/header.php"); ?>
+    <?php include("../template/header.php"); ?>
 
     <button class="bouton" onclick="redirectToHeader()">
         <svg height="18" width="18" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024">
@@ -37,7 +36,7 @@
 
     <main>
         <section class="conteneur" id="tableau_bien">
-            <form action="../../traitement/trait.bien.php" method="post" class="formulaire-insertion">
+            <form action="../traitement/trait.bien.php" method="post" class="formulaire-insertion">
 
                 <label for="nom_bien" class="formulaire-label">Nom bien : </label>
                 <input type="text" name="nom_bien" id="nom_bien" class="formulaire-input">
@@ -45,11 +44,17 @@
                 <label for="rue_bien" class="formulaire-label">Rue bien : </label>
                 <input type="text" name="rue_bien" id="rue_bien" class="formulaire-input"> 
 
+
+
+
                 <label for="vil_bien" class="formulaire-label">Ville bien : </label>
-                <input type="text" id="vil_bien" name="vil_bien" onkeyup="autocomplet()">
+                <input type="text" id="vil_bien" name="vil_bien" onkeyup="autocompletVilleBien()">
 				<input type="hidden" id="codeP_bien" name="codeP_bien">
                 <ul id="aj_ville" name="aj_ville"></ul> <br>    
 
+
+
+                
                 <label for="sup_bien" class="formulaire-label">Superficie bien : </label>
                 <input type="text" name="sup_bien" id="sup_bien" class="formulaire-input">
 
