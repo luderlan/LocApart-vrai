@@ -18,6 +18,8 @@ $datetime_string = date('c', time());
     
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <script type="text/javascript" src="../../js/autocomp/script.rese.js"></script>
+    <script type="text/javascript" src="../../js/autocomp/jquery.min.js"></script>
 </head>
 
 <body>
@@ -90,33 +92,18 @@ $datetime_string = date('c', time());
             <input type="hidden" name="date_rese" id="date_rese"/>
             <input type="hidden"  id="startTime"/>
             <input type="hidden"  id="endTime"/><br>
-                    <p>
-                      <select id="id_bien" name="id_bien">
-                          <?php
-                          $all_biens = $reservation->selectbien();
-                          foreach ($all_biens as $bien) {
-                          ?>
-                              <option value="<?php echo $bien["id_bien"]; ?>">
-                                  <?php echo $bien["id_bien"] . " " . $bien["nom_bien"]; ?>
-                              </option>
-                          <?php
-                          }
-                          ?>
-                      </select>
-                      <select id="id_client" name="id_client">
-                          <?php
-                          $all_clients = $reservation->selectClient();
-                          foreach ($all_clients as $client) {
-                          ?>
-                              <option value="<?php echo $client["id_client"]; ?>">
-                                  <?php echo $client["id_client"] . " " . $client["nom_client"]; ?>
-                              </option>
-                          <?php
-                          }
-                          ?>
-                      </select>
 
-                        </p>   
+                <div class="input_container">
+                    <input type="text" name="id_client" id="id_client" onkeyup="autocompletReseClient()" class="formulaire-input">
+                    <input type="hidden" name="id_client2" id="id_client2" class="formulaire-input">
+                    <ul id="clientRese"></ul>
+                </div>
+
+                <div class="input_container">
+                    <input type="text" name="id_bien" id="id_bien" onkeyup="autocompletReseBien()" class="formulaire-input">
+                    <input type="hidden" name="id_bien2" id="id_bien2" class="formulaire-input">
+                    <ul id="bienRese"></ul>
+                </div>
        
         <div class="control-group">
             <label class="control-label" for="when">Quand :</label>

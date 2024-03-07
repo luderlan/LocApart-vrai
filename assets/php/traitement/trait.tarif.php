@@ -12,11 +12,12 @@ switch ($action) {
         $nouveauDDTarif = $_POST['dd_tarif'];
         $nouveauDFTarif = $_POST['df_tarif'];
         $nouveauPrixLoc = $_POST['prix_loc'];
-        $nouveauIdBien = $_POST['id_bien2'];
+        $nouveauIdBien = $_POST['refb2'];
 
         $oNouveauTarif= new tarif($con);
 
         $oNouveauTarif->insertTarif($nouveauDDTarif, $nouveauDFTarif, $nouveauPrixLoc, $nouveauIdBien);
+        header("location:../affichage/aff.tarif.php");
         break;
 
     case 'update':
@@ -29,13 +30,13 @@ switch ($action) {
 
             $oTarif->updateTarif($id_tarif, $dd, $df, $pl, $idb);
 
-            header("location:../affichage/bien.modif.aff.php");
+            header("location:../affichage/aff.tarif.php");
         }
 
     case 'delete':
         $id_tarif = $_POST['deleteTarif'];
         $oTarif->deleteTarif($id_tarif);
-        header("location:../affichage/aff.client.php");
+        header("location:../affichage/aff.tarif.php");
         break;
 }
 ?>

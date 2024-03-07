@@ -1,12 +1,12 @@
-<<?php
+<?php
 require_once("../include/connexion.inc.php");
 require_once("../class/class.bien.php");
 
 $oBiens = new bien($con);
 
-$action = isset($_POST['ajout']) ? 'ajout' : (isset($_POST['update']) ? 'update' : (isset($_POST['delete']) ? 'delete' : ''));
+$action = isset($_POST['ajout']) ? 'ajout' : (isset($_POST['update']) ? 'update' : (isset($_GET['deleteBien']) ? 'delete' : ''));
 
-switch ($action) {
+switch ($action) {  
   case 'ajout':
     $nouveauNomBien = $_POST['nom_bien'];
     $nouveauRueBien = $_POST['rue_bien'];
@@ -26,7 +26,8 @@ switch ($action) {
     $oNouveauBien->insertBien($nouveauNomBien, $nouveauRueBien, $nouveauCodePBien, $nouveauVilleBien, $nouveauSupBien, $nouveauNBCouchage,
     $nouveauNBPiece, $nouveauNBChambre, $nouveauDescriptif, $nouveauRefBien, $nouveauStatutBien,$nouveauIdTypeBien);
 
-    header("location:../affichage/bien/bien.aff.php");
+    header("location:../affichage/bien.aff.php");
+    break;
 
   case 'update':
     $id_bien = $_POST['id_bien'];
@@ -45,12 +46,14 @@ switch ($action) {
 
     $oBiens->updateBien($id_bien, $nom_bien, $rue_bien, $codeP_bien, $vil_bien, $sup_bien, $nb_couchage, $nb_piece, $nb_chambre, $descriptif, $ref_bien, $statut_bien, $id_type_bien);
 
-    header("location:../affichage/bien/bien.aff.php");
+    header("location:../affichage/bien.aff.php");
+    break;
 
-  case 'sup':
+  case 'delete':
     $id_bien = $_GET['id'];
     $oBiens->deleteBien($id_bien);
-    
-    header("location:../affichage/bien/bien.aff.php");
+
+    header("location:../affichage/bien.aff.php");
+    break;
 }
 ?>

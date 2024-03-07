@@ -1,6 +1,6 @@
 <?php
     require_once("../include/connexion.inc.php");
-    require_once("../class/tarif.class.php");
+    require_once("../class/class.tarif.php");
 ?>
 
 <!DOCTYPE html>
@@ -61,10 +61,10 @@
 
                                 echo "<tr>";
                                 echo "<td>", $row['id_tarif'], "</td>";
-                                echo "<td><input type='text' name='$dd' value='", $row['dd_tarif'], "'></td>";
-                                echo "<td><input type='text' name='$df' value='", $row['df_tarif'], "'></td>";
-                                echo "<td><input type='text' name='$p' value='", $row['prix_loc'], "'></td>";
-                                echo "<td><input type='text' name='$idb' value='", $row['id_bien'], "'></td>";
+                                echo "<td><input type='text' name='dd_tarif' value='", $row['dd_tarif'], "'></td>";
+                                echo "<td><input type='text' name='df_tarif' value='", $row['df_tarif'], "'></td>";
+                                echo "<td><input type='text' name='prix_loc' value='", $row['prix_loc'], "'></td>";
+                                echo "<td><input type='text' name='' value='", $row['id_bien'], "'></td>";
                                 echo "<td><button class='btn btn-primary' name='updateTarif' value='", $row['id_tarif'], "' type=submit'>Modifier</button>
                                 <button class='btn btn-danger' name='deleteTarif' value='", $row['id_tarif'], "' type=submit'>Supprimer</button></td>";
                                 
@@ -91,11 +91,11 @@
                 <input type="text" name="prix_loc" id="prix_loc" class="formulaire-input">
                 
                 <label for="id_bien" class="formulaire-label">Bien : </label>
-                <input type="text" name="id_bien" id="id_bien" onkeyup="autocomplet()" class="formulaire-input">
-                <input type="hidden" name="id_bien2" id="id_bien2" class="formulaire-input">
+                <input type="text" name="refb" id="refb" onkeyup="autocompletTarif()" class="formulaire-input">
+                <input type="hidden" name="refb2" id="refb2" class="formulaire-input">
                 <ul id="bien_list_id"> </ul>
 
-                <button class='btn btn-danger' name='ajoutTarif' value='", $row['id_tarif'], "' type=submit'>Ajouter</button></td>";
+                <td><button class='btn btn-danger' name='ajoutTarif' value='" . $row['id_tarif'] . "' type='submit'>Ajouter</button></td>
             </form>
         </section>
     </main>
