@@ -121,21 +121,57 @@ if ($result->rowCount() > 0) {
     <section class="favoris-section">
         <h2 class="favoris-titre">Biens favoris :</h2>
         <br>
+        
+        <?php
+            $query = "SELECT biens.*, tarif.prix_loc FROM biens
+            JOIN tarif ON biens.id_bien = tarif.id_bien
+            WHERE biens.favoris = 1"; // Sélectionne uniquement les biens marqués comme favoris
+            $result = $con->query($query);
+
+            if ($result->rowCount() > 0) {
+                while ($property = $result->fetch(PDO::FETCH_ASSOC)) {
+                    echo "<section class='content-section'>";
+                    echo "<div class='content-item'>";
+                    echo "<i class='fa-solid fa-heart clickable' style='color: #1b5eaf;' onclick='ajouterFavoris({$property['id_bien']})'></i>";
+                    echo "<a href='pageBien.php?id={$property['id_bien']}'>";
+                    echo "<img src='../assets/img/bien1/img1.jpg' alt=''>";
+                    echo "<h3>{$property['nom_bien']}</h3>";
+                    echo "<div class='content'>";
+                    echo "<div class='text'>";
+                    echo "<p>{$property['vil_bien']}</p>";
+                    echo "</div>";
+                    echo "<div class='icon'>";
+                    echo "<span>{$property['prix_loc']}</span><i class='fa-solid fa-euro-sign'></i>";
+                    echo "<br>";
+                    echo "<span>{$property['nb_couchage']}</span><i class='bx bx-bed'></i>";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "</a>";
+                    echo "</div>";
+                    echo "</section>";
+                }
+            } else {
+                echo "<p>Aucun bien favori disponible.</p>";
+            }
+        ?>
     </section>
     
     <script>
         function ajouterFavoris(idBien) {
-        // Faites une requête Ajax pour mettre à jour la base de données
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                // Mettez à jour l'interface client si nécessaire
-                // Vous pouvez ajouter ici une logique pour mettre à jour l'icône du cœur
-                console.log("Bien ajouté aux favoris !");
-            }
-        };
-        xhr.open("GET", "ajouter_favoris.php?id=" + idBien, true);
-        xhr.send();
+            // Faites une requête Ajax pour mettre à jour la base de données
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Mettez à jour l'interface client si nécessaire
+                    // Vous pouvez ajouter ici une logique pour mettre à jour l'icône du cœur
+                    console.log("Bien ajouté aux favoris !");
+                    // Par exemple, vous pouvez changer la couleur de l'icône du cœur
+                    var icon = document.querySelector(".fa-heart.clickable");
+                    icon.style.color = "red"; // Changez la couleur en rouge pour indiquer que c'est un favori
+                }
+            };
+            xhr.open("GET", "ajouter_favoris.php?id=" + idBien, true);
+            xhr.send();
         }
     </script>
 

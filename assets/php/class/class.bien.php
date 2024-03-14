@@ -201,7 +201,7 @@ class bien
     public function deleteBien($id)
     {
         $data = [":id_bien" => $id];
-        $sql = "UPDATE biens SET valid_bien = 1 WHERE id_bien = :id_bien";
+        $sql = "UPDATE biens SET valid_bien = 0 WHERE id_bien = :id_bien";
         $stmt = $this->con->prepare($sql);
         $stmt->execute($data);
     }

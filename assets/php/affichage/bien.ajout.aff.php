@@ -74,7 +74,7 @@
                 <input type="text" name="ref_bien" id="ref_bien" class="formulaire-input">
 
                 <label for="statut_bien" class="formulaire-label">Statut du bien : </label>
-                <input type="text" name="statut_bien" id="statut_bien" class="formulaire-input">
+                <input type="text" name="statut_bien" id="statut_bien" class="formulaire-input" placeholder="Saisir 1 pour afficher le bien dans la page Nos Biens">
 
                 <label for="id_type_bien" class="formulaire-label">Type de bien : </label>
                 <input type="text" name="id_type_bien" id="id_type_bien" onkeyup="autocompletBien()" class="formulaire-input">
@@ -82,6 +82,8 @@
                 <ul id="type_list_id" name="type_list_id"></ul>
 
                 <input type="submit" value="Ajouter un bien" name='ajout' class="bouton-primaire">
+                <input type="submit" value="Ajouter un bien" name='ajout' class="bouton-primaire">
+
             </form>
         </section>
     </main>

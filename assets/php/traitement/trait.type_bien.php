@@ -4,7 +4,7 @@ require_once("../class/class.type_bien.php");
 
 $oTypeBien = new type_bien($con);
 
-$action = isset($_POST['ajoutTB']) ? 'ajout' : (isset($_POST['updateTB']) ? 'update' : (isset($_POST['deleteTB']) ? 'delete' : ''));
+$action = isset($_POST['ajoutPho']) ? 'ajout' : (isset($_POST['updatePho']) ? 'update' : (isset($_POST['deletePho']) ? 'delete' : ''));
 
 switch ($action) {
     case 'ajout':

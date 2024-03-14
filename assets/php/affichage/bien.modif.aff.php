@@ -60,7 +60,9 @@
                 <input type="text" name="codeP_bien" id="codeP_bien" class="formulaire-input" value="<?php echo $oBienDetails['codeP_bien']; ?>">
                 
                 <label for="vil_bien" class="formulaire-label">Ville bien : </label>
-                <input type="text" name="vil_bien" id="vil_bien" class="formulaire-input" value="<?php echo $oBienDetails['vil_bien']; ?>">
+                <input type="text" id="vil_bien" name="vil_bien" onkeyup="autocompletVilleBien()">
+				<input type="hidden" id="codeP_bien" name="codeP_bien">
+                <ul id="aj_ville" name="aj_ville"></ul> <br>
 
                 <label for="sup_bien" class="formulaire-label">Superficie bien : </label>
                 <input type="text" name="sup_bien" id="sup_bien" class="formulaire-input" value="<?php echo $oBienDetails['sup_bien']; ?>">
@@ -91,6 +93,8 @@
                 <input name='update' type="submit" value="Modifier le bien" class="bouton-primaire">
 
             </form>
+
+            <button class='btn btn-primary' onclick="javascript:window.location.href = 'aff.photo.php?id=<?php echo $id_bien?>' "> Ajouter des photos </button>
         </section>
 
     </main>
