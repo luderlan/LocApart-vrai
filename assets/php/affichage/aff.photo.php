@@ -54,7 +54,7 @@
                             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                                 echo "<tr>";
                                 echo "<td>", $row['id_photo'], "</td>";
-                                echo '<td><img src="C:\wamp64\' . $row['lien_photo'] . $row['id_photo'] . '"> </td>';
+                                echo '<td><img src="C:\\wamp64\\' . $row['lien_photo'] . $row['id_photo'] . '"></td>';
                                 echo "<td><input type='text' name='nom_photo[", $row['id_photo'], "]' value='", $row['nom_photo'], "'></td>";
                                 echo "<td><input type='text' name='lien_photo[", $row['id_photo'], "]' value='", $row['lien_photo'], "'></td>";
                                 echo "<td><input type='text' name='id_bien[", $row['id_photo'], "]' value='", $row['id_bien'], "'></td>";
