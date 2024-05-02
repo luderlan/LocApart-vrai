@@ -1,7 +1,7 @@
 <?php
 
     $user = "root";
-    $mdp = "";
+    $mdp = "FwerTc-XcxK0B8l*";
     $serveur = "localhost";
     $bd = "locapart";
     $dns = "mysql:host=$serveur;dbname=$bd";

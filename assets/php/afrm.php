@@ -1,7 +1,7 @@
 <?php
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = "FwerTc-XcxK0B8l*";
     $dbname = "locapart";
 
     try {
