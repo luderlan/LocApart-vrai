@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarif de biens - Loc'Appart</title>
+    <title>Tarifs - Loc'Appart</title>
     <script type="text/javascript" src="../../js/autocomp/jquery.min.js"></script>
     <script type="text/javascript" src="../../js/autocomp/script.tarif.js"></script>
     <link rel="stylesheet" href="../../css/style.tarif.css">
@@ -19,20 +19,12 @@
 
     <?php include("../template/header.php"); ?>
 
-    <button class="bouton" onclick="redirectToHeader()">
-        <svg height="18" width="18" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024">
-            <path d="M874.690416 495.52477c0 11.2973-9.168824 20.466124-20.466124 20.466124l-604.773963 0 188.083679 188.083679c7.992021 7.992021 7.992021 20.947078 0 28.939099-4.001127 3.990894-9.240455 5.996574-14.46955 5.996574-5.239328 0-10.478655-1.995447-14.479783-5.996574l-223.00912-223.00912c-3.837398-3.837398-5.996574-9.046027-5.996574-14.46955 0-5.433756 2.159176-10.632151 5.996574-14.46955l223.019353-223.029586c7.992021-7.992021 20.957311-7.992021 28.949332 0 7.992021 8.002254 7.992021 20.957311 0 28.949332l-188.073446 188.073446 604.753497 0C865.521592 475.058646 874.690416 484.217237 874.690416 495.52477z" fill="#323232"></path>
-        </svg>
-        <span>Retour</span>
-    </button>
+    <br>
 
-    <script>
-        function redirectToHeader() {
-            window.location.href = "../affichage/bien.modif.aff.php";
-        }
-    </script>
+    <?php $id_temp = $_GET['id'] ?>
+    <?php $nom_temp = $_GET['nom'] ?>
 
-    <br><br><br>
+    <h1>Tarifs du bien <?php echo $id_temp ?> - <?php echo $nom_temp ?></h1>
 
     <main>
         <section class="conteneur" id="tableau_tarif">
@@ -45,12 +37,13 @@
                             <th>Date de fin</th>
                             <th>Prix</th>
                             <th>ID Bien</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody class="tableau_corps">
                         <?php
                         $oTarif = new tarif($con);
-                        $result = $oTarif->selectTarif();
+                        $result = $oTarif->selectTarif($_GET['id']);
                         if ($result->rowCount() > 0) {
                             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                                 
@@ -58,17 +51,21 @@
                                 $df = 'df_tarif'.$row['id_tarif'];
                                 $p = 'prix_loc'.$row['id_tarif'];
                                 $idb = 'id_bien'.$row['id_tarif'];
+                        ?>
 
-                                echo "<tr>";
-                                echo "<td>", $row['id_tarif'], "</td>";
-                                echo "<td><input type='text' name='dd_tarif' value='", $row['dd_tarif'], "'></td>";
-                                echo "<td><input type='text' name='df_tarif' value='", $row['df_tarif'], "'></td>";
-                                echo "<td><input type='text' name='prix_loc' value='", $row['prix_loc'], "'></td>";
-                                echo "<td><input type='text' name='' value='", $row['id_bien'], "'></td>";
-                                echo "<td><button class='btn btn-primary' name='updateTarif' value='", $row['id_tarif'], "' type=submit'>Modifier</button>
-                                <button class='btn btn-danger' name='deleteTarif' value='", $row['id_tarif'], "' type=submit'>Supprimer</button></td>";
-                                
-                                echo "</tr>";
+                        <tr>
+                            <td><?php echo $row['id_tarif']; ?></td>
+                            <td><input type='text' name='dd_tarif' value='<?php echo $row['dd_tarif']; ?>'></td>
+                            <td><input type='text' name='df_tarif' value='<?php echo $row['df_tarif']; ?>'></td>
+                            <td><input type='text' name='prix_loc' value='<?php echo $row['prix_loc']; ?>'></td>
+                            <td><input type='text' name='id_bien' value='<?php echo $row['id_bien']; ?>'></td>
+                            <td>
+                                <button class='btn btn-primary' name='updateTarif' value='<?php echo $row['id_tarif']; ?>' type='submit'>Modifier</button>
+                                <button class='btn btn-danger' name='deleteTarif' value='<?php echo $row['id_tarif']; ?>' type='submit'>Supprimer</button>
+                            </td>
+                        </tr>
+
+                        <?php
 
                             }
                         } else {
@@ -95,7 +92,7 @@
                 <input type="hidden" name="refb2" id="refb2" class="formulaire-input">
                 <ul id="bien_list_id"> </ul>
 
-                <td><button class='btn btn-danger' name='ajoutTarif' value='" . $row['id_tarif'] . "' type='submit'>Ajouter</button></td>
+                <td><button class='btn btn-danger' name='ajoutTarif' value='Ajouter un tarif' type='submit'>Ajouter</button></td>
             </form>
         </section>
     </main>

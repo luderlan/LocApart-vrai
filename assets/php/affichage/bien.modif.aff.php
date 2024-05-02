@@ -21,6 +21,7 @@
 
     <?php
         $id_bien = isset($_GET['id']) ? $_GET['id'] : null;
+        $nom_bien = isset($_GET['nom']) ? $_GET['nom'] : null;
         $oBien = new bien($con);
         $stmt = $oBien->selectById($id_bien);
         $oBienDetails = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -90,11 +91,12 @@
                 <input type="hidden" name="id_type_bien2" id="id_type_bien2" class="formulaire-input" value="<?php echo $oBienDetails['id_type_bien']; ?>">
                 <ul id="type_list_id"> </ul>
 
-                <input name='update' type="submit" value="Modifier le bien" class="bouton-primaire">
+                <input name='update' type="submit" value="Modifier le bien" class="bouton-primaire"> <br>
 
             </form>
 
-            <button class='btn btn-primary' onclick="javascript:window.location.href = 'aff.photo.php?id=<?php echo $id_bien?>' "> Ajouter des photos </button>
+            <button class='btn btn-primary' onclick="window.location.href = 'aff.photo.php?id=<?php echo $id_bien ?>&nom=<?php echo $nom_bien ?>'">Ajouter des photos</button>
+            <button class='btn btn-primary' onclick="window.location.href = 'aff.tarif.php?id=<?php echo $id_bien ?>&nom=<?php echo $nom_bien ?>'">Gérer les tarifs</button>
         </section>
 
     </main>

@@ -59,9 +59,9 @@ class tarif
 
 
     //Méthodes
-    public function selectTarif()
+    public function selectTarif($idb)
     {
-        $sql = "SELECT * FROM tarif";
+        $sql = "SELECT * FROM tarif where id_bien = $idb";
         $stmt = $this->con->query($sql);
         return $stmt;
     }
@@ -76,7 +76,7 @@ class tarif
         ];
 
         $sql = "INSERT INTO tarif (dd_tarif, df_tarif, prix_loc, id_bien)
-        VALUES (:dd_tarif, :df_tarif, :prix_loc, :id_bien)";
+                VALUES (:dd_tarif, :df_tarif, :prix_loc, :id_bien)";
         
         $stmt = $this->con->prepare($sql);
         $stmt->execute($data);

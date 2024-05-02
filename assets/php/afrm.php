@@ -5,7 +5,7 @@
     $dbname = "locapart";
 
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        $con = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     }
     catch (PDOException $e) {
         echo "Erreur de connexion à la base de données : " . $e->getMessage();
@@ -15,7 +15,7 @@
         $log = ($_POST['login']);
         $mdp = ($_POST['mdp']);
 
-        $stmt = $conn->prepare("SELECT * FROM users WHERE admin_log=? AND mot_de_passe=?");
+        $stmt = $con->prepare("SELECT * FROM users WHERE admin_log=? AND mot_de_passe=?");
         $stmt->bindParam(1, $log);
         $stmt->bindParam(2, $mdp);
         $stmt->execute();
@@ -34,7 +34,7 @@
         $stmt->closeCursor();
     }
 
-    $conn = null;
+    $con = null;
 ?>
 
 

@@ -49,9 +49,9 @@ class Photo
 
 
     //fonctions
-    public function selectPhoto()
+    public function selectPhoto($idp)
     {
-        $sql = "SELECT * FROM photos";
+        $sql = "SELECT * FROM photos where id_bien = $idp";
         $stmt = $this->con->query($sql);
         return $stmt;
     }
@@ -102,7 +102,7 @@ class Photo
     {
         $data = [":idp" => $id];
 
-        $sql = "SELECT nom_photo,lien_photo,id_bien
+        $sql = "SELECT id_photo,nom_photo,lien_photo,id_bien
         FROM photos 
         WHERE id_photo = :idp";
         

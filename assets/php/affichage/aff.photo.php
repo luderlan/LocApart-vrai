@@ -1,6 +1,7 @@
 <?php
     require_once("../include/connexion.inc.php");
     require_once("../class/class.photo.php");
+    require_once("../class/class.bien.php");
 ?>
 
 <!DOCTYPE html>
@@ -22,8 +23,10 @@
 <?php include("../template/header.php"); ?>
 
 <br>
+<?php $id_temp = $_GET['id'] ?>
+<?php $nom_temp = $_GET['nom'] ?>
 
-<h1>Photos du bien <?php echo $_GET['id'] ?></h1>
+<h1>Photos du bien <?php echo $id_temp ?> - <?php echo $nom_temp ?></h1>
 
 <br>
 
@@ -44,23 +47,28 @@
                             <th>Nom photo</th>
                             <th>Chemin photo</th>
                             <th>id_bien</th>
+                            <th colspan="2">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="tableau_corps">
                         <?php
                         $oPhoto = new photo($con);
-                        $result = $oPhoto->selectPhoto();
+                        $result = $oPhoto->selectPhoto($_GET['id']);
                         if ($result->rowCount() > 0) {
                             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                                echo "<tr>";
-                                echo "<td>", $row['id_photo'], "</td>";
-                                echo '<td><img src="C:\\wamp64\\' . $row['lien_photo'] . $row['id_photo'] . '"></td>';
-                                echo "<td><input type='text' name='nom_photo[", $row['id_photo'], "]' value='", $row['nom_photo'], "'></td>";
-                                echo "<td><input type='text' name='lien_photo[", $row['id_photo'], "]' value='", $row['lien_photo'], "'></td>";
-                                echo "<td><input type='text' name='id_bien[", $row['id_photo'], "]' value='", $row['id_bien'], "'></td>";
-                                echo "<td><button class='btn btn-primary' name='updatePho' value='", $row['id_photo'], "' type=submit'>Modifier</button>
-                                <button class='btn btn-danger' name='deletePho' value='", $row['id_photo'], "' type=submit'>Supprimer</button></td>";
-                                echo "</tr>";
+                                $chemin = "../../img/biens/".$row['nom_photo']; 
+                        ?>
+                                <tr>
+                                <td><?php echo $row['id_photo']; ?></td>
+                                <td><img src="<?php echo $chemin; ?>" height='150px' width='auto'></td>
+                                <td><input type='text' name='nom_photo[<?php echo $row['id_photo']; ?>]' value='<?php echo $row['nom_photo']; ?>'></td>
+                                <td><input type='text' name='lien_photo[<?php echo $row['id_photo']; ?>]' value='<?php echo $row['lien_photo']; ?>'></td>
+                                <td><input type='text' name='id_bien[<?php echo $row['id_photo']; ?>]' value='<?php echo $row['id_bien']; ?>'></td>
+                                <td><button class='btn btn-primary' name='updatePho' value='<?php echo $row['id_photo']; ?>' type='submit'>Modifier</button>
+                                <button class='btn btn-danger' name='deletePho' value='<?php echo $row['id_photo']; ?>' type='submit'>Supprimer</button>
+                                </td>
+                                </tr>
+                        <?php
                             }                            
                         } else {
                             echo "<p>Aucun résultat trouvé.</p>";
@@ -70,6 +78,5 @@
                 </table>
             </form>
         </section>
-
 </body>
 </html>

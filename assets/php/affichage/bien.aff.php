@@ -71,6 +71,7 @@
                                     $oTypeBien = new bien($con);
                                     $lib = $oTypeBien->getlib_type_bien($row['id_type_bien'],$con);
                                     $id = $row['id_bien'];
+                                    $nom = $row['nom_bien'];
                                     echo "<tr>";
                                     echo "<td>", $row['id_bien'], "</td>";
                                     echo "<td><span>", $row['nom_bien'], "</span></td>";
@@ -87,7 +88,7 @@
                                     echo "<td><span>", $lib, "</span></td>";
                                     ?>
                                     <td>
-                                        <button class='btn btn-primary' onclick="javascript:window.location.href = 'bien.modif.aff.php?id=<?php echo $id?>' "> Modifier </button>
+                                        <button class='btn btn-primary' onclick="javascript:window.location.href = 'bien.modif.aff.php?id=<?php echo $id?>&nom=<?php echo $nom?>' "> Modifier </button>
                                         <button class='btn btn-danger' onclick="javascript:window.location.href ='../traitement/trait.bien.php?action=deleteBien&id=<?php echo $id?>' "> Supprimer </button>
                                     </td>
                                     <?php    
