@@ -58,8 +58,8 @@
                         $oClient = new Client($con);
                         $result = $oClient->selectClient();
                         $oCommunes = new Communes($con);
-                        // $resultat = $oCommunes->selectCommune();
-                        if ($result->rowCount() > 0) {
+
+                        if ($result && $result->rowCount() > 0) {
                             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                                 echo "<tr>";
                                 echo "<td>", $row['id_client'], "</td>";
@@ -104,7 +104,7 @@
                 <input type="text" name="statut_client" id="statut_client" class="formulaire-input">
                 <label for="valid_client" class="formulaire-label">Client valide ? </label>
                 <input type="text" name="valid_client" id="valid_client" class="formulaire-input">
-                <input type="submit" value="Ajouter un Client" class="bouton-primaire" name="ajoutCli id=<?php echo $id_bien ?>&nom=<?php echo $nom_bien ?>>
+                <input type="submit" value="Ajouter un Client" class="bouton-primaire" name="ajoutCli">
             </form>
         </section>
     </main>

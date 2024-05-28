@@ -1,5 +1,22 @@
 <?php
     require_once("../assets/php/include/connexion.inc.php");
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $type_bien = $_POST['type_bien'];
+        $ville = $_POST['ville'];
+        $ref_bien = $_POST['ref_bien'];
+        $recherche = true;
+    
+    }
+    else{
+        $recherche = false;
+    }
+
+    function Supprtout()
+    {
+        $recherche = false;
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +32,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Borel&family=Handlee&family=Poppins:wght@600&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Mooli:wght@400;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="../assets/js/autocomp/jquery.min.js"></script>
+    <script type="text/javascript" src="../assets/js/autocomp/script.filtres.js"></script>
 
     <title>Nos Biens</title>
 </head>
@@ -52,32 +71,34 @@
         <hr>
         <br>
         <br>
+        <form action="../interface/biens.php" method="post">
+
         <div>
-            <p><i class="fa-solid fa-euro-sign"></i>  Prix</p> <br>
+            <p><i class="fa-regular fa-building"></i>Type de bien</p>
             <div style="margin-left: 15px;">
-                <label for="Minimum">Minimum</label>
-                <input type="text">
-                <label for="Maximum">Maximum</label>
-                <input type="text">
+                <input type="text" name="ntypeb" onkeyup="autocompletTBfiltres()> <br> <br>
+                <input type="hidden" id="type_bien" name="type_bien">
+                <ul id="filtres_tb_list" name="filtres_tb_list"></ul>
             </div>
-            <br>
-            <p><i class="fa-regular fa-building"></i> Type de bien</p> <br>
+        </div><br>
+
+        <div>
             <div style="margin-left: 15px;">
-                <label for="option1">Maison</label>
-                <input type="checkbox" id="option1" name="options" value="Maison"> <br>
-                <label for="option1">Appartement</label>
-                <input type="checkbox" id="option1" name="options" value="Appartement"> <br>
-                <label for="option1">Gîte</label>
-                <input type="checkbox" id="option1" name="options" value="Gîte"> <br>
-                <label for="option1">Villa</label>
-                <input type="checkbox" id="option1" name="options" value="Villa"> <br>
-                <label for="option1">Château</label>
-                <input type="checkbox" id="option1" name="options" value="Château"> <br>
-                <label for="option1">Manoire</label>
-                <input type="checkbox" id="option1" name="options" value="Manoire"> <br> <br>
+                <label for="Ville">Ville</label><br>
+                <input type="text" name="ville"> <br> <br>
             </div>
-            <button>Rechercher</button>
-        </div>
+        </div><br>
+
+        <div>
+            <div style="margin-left: 15px;">
+                <label for="Refbien">Reference bien</label><br>
+                <input type="text" name="ref_bien"> <br> <br>
+            </div>
+        </div><br>
+
+        <button  ="submit">Rechercher</button>
+        <button  onclick="Supprtout()">Supprimer</button>
+    </form>
     </div>    
     
     <section class="une-section">
@@ -85,18 +106,26 @@
     </section>
 
 <?php
-    $query = "SELECT biens.*, tarif.prix_loc FROM biens
-    JOIN tarif ON biens.id_bien = tarif.id_bien
-    WHERE statut_bien = 1";
-    $result = $con->query($query);
 
-if ($result->rowCount() > 0) {
+$recherche == false;
+$req = "SELECT biens.*, tarif.prix_loc, MIN(photos.lien_photo) AS lien_photo, MIN(photos.nom_photo) AS nom_photo FROM biens
+JOIN tarif ON biens.id_bien = tarif.id_bien
+LEFT JOIN photos ON biens.id_bien = photos.id_bien
+WHERE statut_bien = 1
+GROUP BY biens.id_bien"; 
+
+ $result = $con->query($req);
+
+ if ($result->rowCount() > 0) {
     while ($property = $result->fetch(PDO::FETCH_ASSOC)) {
+        $k = "../assets/img/biens/".$property['nom_photo'];
+
         echo "<section class='content-section'>";
         echo "<div class='content-item'>";
-        echo "<i class='fa-solid fa-heart clickable' style='color: #1b5eaf;' onclick='ajouterFavoris({$property['id_bien']})'></i>";
+        echo "<i class='fa-solid fa-heart clickable' style='color: #1b5eaf;'></i>";
         echo "<a href='pageBien.php?id={$property['id_bien']}'>";
-        echo "<img src='../assets/img/bien1/img1.jpg' alt=''>";
+        echo '<img src="' . $k . '" alt="">';
+        
         echo "<h3>{$property['nom_bien']}</h3>";
         echo "<div class='content'>";
         echo "<div class='text'>";
@@ -112,68 +141,11 @@ if ($result->rowCount() > 0) {
         echo "</div>";
         echo "</section>";
     }
+    
 } else {
     echo "<p>Aucun bien disponible.</p>";
 }
-?> 
-
-    <hr>   
-    <section class="favoris-section">
-        <h2 class="favoris-titre">Biens favoris :</h2>
-        <br>
-        
-        <?php
-            $query = "SELECT biens.*, tarif.prix_loc FROM biens
-            JOIN tarif ON biens.id_bien = tarif.id_bien
-            WHERE biens.favoris = 1"; // Sélectionne uniquement les biens marqués comme favoris
-            $result = $con->query($query);
-
-            if ($result->rowCount() > 0) {
-                while ($property = $result->fetch(PDO::FETCH_ASSOC)) {
-                    echo "<section class='content-section'>";
-                    echo "<div class='content-item'>";
-                    echo "<i class='fa-solid fa-heart clickable' style='color: #1b5eaf;' onclick='ajouterFavoris({$property['id_bien']})'></i>";
-                    echo "<a href='pageBien.php?id={$property['id_bien']}'>";
-                    echo "<img src='../assets/img/bien1/img1.jpg' alt=''>";
-                    echo "<h3>{$property['nom_bien']}</h3>";
-                    echo "<div class='content'>";
-                    echo "<div class='text'>";
-                    echo "<p>{$property['vil_bien']}</p>";
-                    echo "</div>";
-                    echo "<div class='icon'>";
-                    echo "<span>{$property['prix_loc']}</span><i class='fa-solid fa-euro-sign'></i>";
-                    echo "<br>";
-                    echo "<span>{$property['nb_couchage']}</span><i class='bx bx-bed'></i>";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "</a>";
-                    echo "</div>";
-                    echo "</section>";
-                }
-            } else {
-                echo "<p>Aucun bien favori disponible.</p>";
-            }
-        ?>
-    </section>
-    
-    <script>
-        function ajouterFavoris(idBien) {
-            // Faites une requête Ajax pour mettre à jour la base de données
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    // Mettez à jour l'interface client si nécessaire
-                    // Vous pouvez ajouter ici une logique pour mettre à jour l'icône du cœur
-                    console.log("Bien ajouté aux favoris !");
-                    // Par exemple, vous pouvez changer la couleur de l'icône du cœur
-                    var icon = document.querySelector(".fa-heart.clickable");
-                    icon.style.color = "red"; // Changez la couleur en rouge pour indiquer que c'est un favori
-                }
-            };
-            xhr.open("GET", "ajouter_favoris.php?id=" + idBien, true);
-            xhr.send();
-        }
-    </script>
+?>
 
     <script>
         function afficherInterfaceRecherche() {

@@ -82,7 +82,6 @@
                 <ul id="type_list_id" name="type_list_id"></ul>
 
                 <input type="submit" value="Ajouter un bien" name='ajout' class="bouton-primaire">
-                <input type="submit" value="Ajouter un bien" name='ajout' class="bouton-primaire">
 
             </form>
         </section>

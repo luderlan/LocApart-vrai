@@ -13,6 +13,13 @@
 
       if ($stmt->rowCount() > 0) {
           $property = $stmt->fetch(PDO::FETCH_ASSOC);
+
+          // Requête pour récupérer les photos associées au bien
+          $photo_query = "SELECT * FROM photos WHERE id_bien = :id_bien";
+          $photo_stmt = $con->prepare($photo_query);
+          $photo_stmt->bindParam(':id_bien', $id_bien, PDO::PARAM_INT);
+          $photo_stmt->execute();
+          $photos = $photo_stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +37,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Mooli:wght@400;700&display=swap" rel="stylesheet">
     <title>Page du bien</title>
 </head>
+<body>
   <header>
       <img class="logo" src="../logo-site/logo-finis.png" alt="">
 
@@ -46,19 +54,12 @@
       </div>
   </header>
 
-<body>
     <div class="wrapper">
       <i id="left" class="fa-solid fa-angle-left"></i>
         <div class="carousel">
-          <img src="../assets/img/bien1/img1.jpg" alt="img" draggable="false">
-          <img src="../assets/img/bien2/img1.jpg" alt="img" draggable="false">
-          <img src="../assets/img/bien3/img1.jpeg" alt="img" draggable="false">
-          <img src="../assets/img/bien4/img1.jpg" alt="img" draggable="false">
-          <img src="../assets/img/bien5/img1.jpg" alt="img" draggable="false">
-          <img src="../assets/img/bien6/img1.jpg" alt="img" draggable="false">
-          <img src="../assets/img/bien7/img1.jpg" alt="img" draggable="false">
-          <img src="../assets/img/bien8/img1.jpg" alt="img" draggable="false">
-          <img src="../assets/img/bien9/img1.jpg" alt="img" draggable="false">
+          <?php foreach ($photos as $photo): ?>
+            <img src="../assets/img/biens/<?php echo $photo['nom_photo']; ?>" alt="img" draggable="false">
+          <?php endforeach; ?>
         </div>
         <i id="right" class="fa-solid fa-angle-right"></i>
     </div>
@@ -80,13 +81,14 @@
 </html>
 
 <?php
+      } else {
+          echo "<p>Le bien avec l'ID $id_bien n'a pas été trouvé.</p>";
+      }
   } else {
-    echo "<p>Le bien avec l'ID $id_bien n'a pas été trouvé.</p>";
-  }
-  } else {
-    echo "<p>Aucun ID de bien n'a été fourni.</p>";
+      echo "<p>Aucun ID de bien n'a été fourni.</p>";
   }
 ?>
+
 
 <footer>
     <div class="card">

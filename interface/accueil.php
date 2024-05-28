@@ -40,19 +40,25 @@
     </section>  
 
 <?php
-    $query = "SELECT biens.*, tarif.prix_loc FROM biens
+    $query = "SELECT biens.*, tarif.prix_loc, MIN(photos.lien_photo) AS lien_photo, MIN(photos.nom_photo) AS nom_photo FROM biens
     JOIN tarif ON biens.id_bien = tarif.id_bien
+    LEFT JOIN photos ON biens.id_bien = photos.id_bien
     WHERE statut_bien = 1
-    AND bien_une = 1";
+    AND bien_une = 1
+    GROUP BY biens.id_bien";    
+        
     $result = $con->query($query);
 
 if ($result->rowCount() > 0) {
     while ($property = $result->fetch(PDO::FETCH_ASSOC)) {
+        $k = "../assets/img/biens/".$property['nom_photo'];
+
         echo "<section class='content-section'>";
         echo "<div class='content-item'>";
         echo "<i class='fa-solid fa-heart clickable' style='color: #1b5eaf;'></i>";
         echo "<a href='pageBien.php?id={$property['id_bien']}'>";
-        echo "<img src='../assets/img/bien1/img1.jpg' alt=''>";
+        echo '<img src="' . $k . '" alt="">';
+        
         echo "<h3>{$property['nom_bien']}</h3>";
         echo "<div class='content'>";
         echo "<div class='text'>";
@@ -68,6 +74,7 @@ if ($result->rowCount() > 0) {
         echo "</div>";
         echo "</section>";
     }
+    
 } else {
     echo "<p>Aucun bien disponible.</p>";
 }

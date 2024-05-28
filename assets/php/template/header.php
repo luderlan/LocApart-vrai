@@ -31,7 +31,6 @@
         <br>
         <a href="../affichage/aff.client.php" class="button">Clients</a>
         <a href="../affichage/bien.aff.php" class="button">Biens</a>
-        <a href="../affichage/aff.tarif.php" class="button">Tarifs</a>
         <a href="../affichage/aff.reservation.php" class="button">Réservation</a>
         <a href="../affichage/aff.type_bien.php" class="button">Type bien</a>
     </div>
